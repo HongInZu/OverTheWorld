@@ -1,0 +1,42 @@
+@import "component/loading";
+@import "component/header";
+@import "component/footer";
+@import "component/search";
+
+body {
+    &:before {
+        display: none;
+        content: "xs";
+        @include sm {
+            content: "sm";
+        };
+        @include md {
+            content: "md";
+        };
+        @include lg {
+            content: "lg";
+        };
+    }
+}
+
+.ih-page {
+    background: $color-gray-bg;
+    margin-top: $header-height-mobile;
+    padding-bottom: 100px;
+    @include md {
+        margin-top: $header-height-pc;
+        padding-bottom: 50px;
+    };
+}
+
+.ih-form-group-icon {
+    .form-control {
+        padding-right: 30px;
+    }
+
+    i {
+        @include position(absolute,top,45%,right,10px);
+        transform: translateY(-50%);
+        color: #aaa;
+    }
+}

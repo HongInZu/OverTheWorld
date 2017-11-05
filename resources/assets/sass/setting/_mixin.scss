@@ -1,0 +1,69 @@
+@mixin font($font-size, $line-height, $color) {
+    font-size: $font-size;
+    line-height: $line-height;
+    color: $color;
+}
+@mixin box($paddingwhere, $paddingvalue, $borderwhere, $bordervalue, $marginwhere, $marginvalue) {
+    #{$paddingwhere}: $paddingvalue;
+    #{$borderwhere}: $bordervalue;
+    #{$marginwhere}: $marginvalue;
+}
+@mixin position($position,$where1,$value1,$where2,$value2) {
+    position: $position;
+    #{$where1}: $value1;
+    #{$where2}: $value2;
+}
+@mixin ratio($padding) {
+    width: 100%;
+    height: 0;
+    padding: 0 0 $padding !important;
+    overflow: hidden;
+}
+@mixin imgCover($position, $clip) {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: $position;
+    background-clip: $clip;
+}
+@mixin flex($justify-content,$align-items) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+/* ===== RWD =================================== */
+@mixin smbelow {
+     @media (max-width: 991px){
+        @content;
+    }
+}
+@mixin smabove {
+     @media (min-width: 768px){
+        @content;
+    }
+}
+@mixin xs {
+     @media (max-width: 767px){
+        @content;
+    }
+}
+@mixin xxs {
+     @media (max-width: 479px){
+        @content;
+    }
+}
+@mixin sm {
+     @media (min-width: 768px) and (max-width: 991px){
+        @content;
+    }
+}
+@mixin md {
+     @media (min-width: 992px){
+        @content;
+    }
+}
+@mixin lg {
+     @media (min-width: 1200px){
+        @content;
+    }
+}

@@ -1,0 +1,159 @@
+.ih-component-footer {
+    background: $color-black;
+
+    .ih-section-main {
+        @include md {
+            padding: 30px 0 35px;
+        };
+
+        .ih-section-top {
+            $size: 45px;
+            z-index: 9;
+            right: 15px;
+            @include smbelow {
+                top: -60px;
+            };
+            @include md {
+                bottom: 0;
+            };
+            @include lg {
+                right: -$size;
+            };
+
+            button {
+                @include font(20px,$size,#fff);
+                width: $size;
+                border-radius: 50%;
+                background: $color-blue;
+                box-shadow: 0 5px 5px #ccc;
+                @include md {
+                    box-shadow: 0 5px 5px #1a1c22;
+                };
+            }
+        }
+
+        .ih-section-app,
+        .ih-section-information,
+        .ih-section-site-map {
+            @include smbelow {
+                 @include box(padding,15px 0,border-bottom,1px solid $color-gray-light,margin,0);
+
+                &.ih-section-site-map {
+                    border-bottom: 0;
+                }
+            };
+        }
+
+        .ih-heading {
+            margin-bottom: 25px;
+
+            &:before {
+                @include md {
+                    content: "";
+                    @include position(absolute,top,50%,left,0);
+                    transform: translateY(-50%);
+                    width: 100%;
+                    border-top: 1px solid $color-gray-light;
+                };
+            }
+
+            h2 {
+                @include font(16px,24px,#fff);
+                padding: 0 20px;
+                background: $color-black;
+                @include md {
+                    display: table;
+                };
+            }
+        }
+
+        .ih-font {
+            @include font(13px,20px,#fff);
+            margin-bottom: 10px;
+        }
+
+        .ih-section-information {
+            p,
+            ul {
+                @include smbelow {
+                    text-align: center;
+                };
+            }
+
+            ul {
+                margin-top: 20px;
+
+                a {
+                    @include font(20px,40px,$color-gray-light);
+                    @include box(padding,0,border,1px solid #fff,margin,0 5px);
+                    width: 40px;
+                    border-radius: 50%;
+                    @include md {
+                        margin: 0 10px 0 0;
+                    };
+
+                    &:hover {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .ih-section-app {
+            .ih-heading {
+                @include smbelow {
+                    margin-bottom: 0;
+                };
+
+                i {
+                    font-size: 24px;
+                    color: $color-blue;
+                    @include position(absolute,top,0,right,30px);
+                }
+            }
+
+            table {
+                @include smbelow {
+                    display: none;
+                    margin: 15px auto 0;
+                };
+            }
+        }
+
+        .ih-section-site-map {
+            ul {
+                @include md {
+                    float: left;
+                };
+            }
+
+            .ih-menu {
+                @include md {
+                    margin-right: 30px;
+                };
+
+                li {
+                    @include smbelow {
+                        float: left;
+                        width: 25%;
+                        text-align: center;
+                    };
+
+                    a {
+                        @include smbelow {
+                            margin-bottom: 0;
+                        };
+                    }
+                }
+            }
+        }
+    }
+
+    .ih-section-copyright {
+        background: #1a1c22;
+        @include font(13px,30px,rgba(255,255,255,0.6));
+        @include smbelow {
+            text-align: center;
+        };
+    }
+}

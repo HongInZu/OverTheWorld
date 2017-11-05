@@ -1,0 +1,107 @@
+$values: 0 5 10 15 20 25 30 35 40 45 50 55 60;
+$positions: top right bottom left;
+@each $value in $values {
+     @each $position in $positions{
+        .ih-margin-#{$position}-#{$value} {
+            margin-#{$position}: #{$value}px;
+        }
+
+        .ih-padding-#{$position}-#{$value} {
+            padding-#{$position}: #{$value}px;
+        }
+    }
+
+    .ih-margin-#{$value} {
+        margin: #{$value}px;
+    }
+
+    .ih-padding-#{$value} {
+        padding: #{$value}px;
+    }
+}
+
+.ih-pointer {
+    cursor: pointer;
+}
+
+.ih-underline {
+    text-decoration: underline;
+}
+
+.ih-del {
+    text-decoration: line-through;
+}
+
+.ih-opacity-0 {
+    opacity: 0;
+}
+
+.ih-hide {
+    display: none;
+}
+
+.ih-inline-block {
+    display: inline-block;
+}
+
+.ih-block {
+    display: block;
+}
+
+.ih-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ih-relative {
+    position: relative;
+}
+
+.ih-absolute {
+    position: absolute;
+}
+
+.ih-img-full {
+    width: 100%;
+}
+
+.ih-img-center {
+    margin-top: -5px;
+}
+
+.ih-button {
+    @include box(padding,0,border,0,margin,0 auto);
+    background: transparent;
+}
+
+.ih-ul {
+    margin-bottom: 0;
+    list-style: none;
+    padding-left: 0;
+}
+
+.ih-pre {
+    background: transparent;
+    @include box(padding,0,border,0,margin,0 auto);
+    border-radius: 0;
+    white-space: pre-wrap;
+    font-family: $font-family;
+}
+
+.ih-table {
+    width: 100%;
+}
+
+.ih-offscreen {
+    position: absolute;
+    left: -10000px;
+    z-index: -1;
+}
+
+.ih-font-bootstrap {
+    font-family: 'Glyphicons Halflings';
+}
+
+.ih-font-awesome {
+    font-family: 'FontAwesome';
+}

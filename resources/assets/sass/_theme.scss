@@ -1,0 +1,153 @@
+@keyframes slideOutRight {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        visibility: hidden;
+        transform: translate3d(100%, 0, 0);
+    }
+}
+@keyframes flash {
+    50%,
+    from,
+    to {
+        opacity: 1;
+    }
+
+    25%,
+    75% {
+        opacity: 0;
+    }
+}
+
+.ih-theme-hover-blue {
+    &:hover {
+        color: $color-blue !important;
+        transition: $transition-time;
+    }
+}
+
+.ih-theme-hover-blue-dark {
+    &:hover {
+        color: $color-blue-dark !important;
+        transition: $transition-time;
+    }
+}
+
+.ih-theme-hover-scale {
+    &:hover {
+        transform: scale(1.1);
+        transition: $transition-time;
+    }
+}
+
+.ih-theme-hover-img {
+    &:hover {
+        img {
+            transition: $transition-time*1.5;
+            transform: scale(1.2);
+        }
+    }
+}
+
+.ih-theme-star {
+    @include font(15px,inherit,$color-gray-light);
+
+    &.ih-active {
+        color: $color-yellow;
+    }
+}
+
+.ih-theme-favorite {
+    @include font(16px,20px,$color-black);
+
+    &:hover i {
+        color: $color-red;
+    }
+
+    i {
+        color: $color-gray;
+        font-size: 20px;
+
+        &.ih-active {
+            color: $color-red;
+        }
+    }
+}
+
+.ih-theme-button-search {
+    $size: 5px;
+    @include font(16px,$form-element-height,#fff);
+    background: $color-blue;
+    width: 100%;
+    vertical-align: middle;
+    transform: perspective(1px) translateZ(0);
+    transition: $transition-time/2;
+
+    &:before {
+        content: "";
+        @include position(absolute,top,0,left,calc(50% - #{$size}));
+        z-index: -1;
+        border-style: solid;
+        border-width: 0 $size $size $size;
+        border-color: transparent transparent $color-blue transparent;
+        transition: $transition-time/2;
+        transition-property: transform;
+    }
+
+    &:hover {
+        transform: translateY($size);
+
+        &:before {
+            transform: translateY(-$size);
+        }
+    }
+}
+
+.ih-theme-book {
+    @include font(13px,40px,#fff !important);
+    background: $color-blue;
+    @include lg {
+        font-size: 16px;
+        line-height: 50px;
+    };
+
+    &:hover {
+        i {
+            animation-name: slideOutRight;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+    }
+
+    i {
+        margin-left: 5px;
+        @include lg {
+            margin-left: 10px;
+        };
+    }
+}
+
+.ih-theme-tab {
+    @include box(padding,0,border-bottom,1px solid $color-black,margin-bottom,40px);
+
+    li {
+        @include font(18px,55px,$color-black);
+
+        &.ih-active,
+        &:hover {
+            transition: $transition-time;
+            color: #fff;
+            background: $color-black;
+        }
+    }
+}
+
+.ih-theme-box-shadow-dark {
+    box-shadow: 0 5px 15px 1px #555;
+}
+
+.ih-theme-box-shadow-light {
+    box-shadow: 0 5px 15px 1px #cecece;
+}

@@ -1,0 +1,211 @@
+@import "setting";
+@import "theme";
+@import "common";
+
+.ih-page-index {
+    @include md {
+        margin-top: $header-height-pc-top;
+    };
+
+    .ih-section-banner {
+        .ih-img {
+            @include ratio(40%);
+        }
+
+        .owl-nav {
+            margin: 0;
+            @include position(absolute,top,50%,left,0);
+            transform: translateY(-50%);
+            width: 100%;
+
+            .owl-next,
+            .owl-prev {
+                @include font(15px,30px,#fff);
+                @include box(padding,0,border,0,margin,0);
+                border-radius: 0;
+                width: 30px;
+                background: $color-blue;
+                opacity: 0.8;
+                @include md {
+                    font-size: 30px;
+                    line-height: 50px;
+                    width: 50px;
+                };
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+
+            .owl-prev {
+                float: left;
+            }
+
+            .owl-next {
+                float: right;
+            }
+        }
+    }
+
+    .ih-section-search {
+        position: relative;
+        z-index: 9;
+
+        .ih-tab-container {
+            @include md {
+                width: 70%;
+                max-width: 1000px;
+                margin: -120px auto 0;
+            };
+
+            .ih-tab {
+                li {
+                    @include font(18px,50px,#fff);
+                    background: $color-blue;
+                    width: 20%;
+                    @include smbelow {
+                        float: left;
+                        width: 25%;
+                        line-height: 35px;
+                        padding: 5px 0;
+                    };
+
+                    &.ih-active,
+                    &:hover {
+                        transition: $transition-time;
+                        background: $color-black;
+
+                        i {
+                            color: #000;
+                        }
+                    }
+
+                    i {
+                        color: $color-black;
+                        line-height: inherit;
+                        @include md {
+                             @include position(absolute,top,0,left,15px);
+                        };
+                    }
+                }
+            }
+
+            .ih-tab-content {
+                padding: 30px 15px;
+                background: $color-black;
+                @include md {
+                    padding: 45px 60px;
+                };
+                @include lg {
+                    padding: 45px 80px;
+                };
+            }
+        }
+    }
+
+    .ih-section-collection {
+        .ih-heading {
+            display: table;
+            padding: 25px 25px 20px;
+            background: #fff;
+            @include smbelow {
+                margin-bottom: 15px;
+            };
+
+            .ih-ch {
+                @include font(30px,100%,$color-black);
+                margin-bottom: 15px;
+            }
+
+            hr {
+                border-top: 1px solid $color-blue;
+                width: 40px;
+                margin-bottom: 10px;
+            }
+
+            .ih-en {
+                @include font(16px,100%,$color-gray);
+
+                span {
+                    font-size: 20px;
+                }
+            }
+
+            i {
+                @include font(30px,100%,$color-gray);
+                @include position(absolute,bottom,-5px,right,-10px);
+            }
+        }
+
+        .ih-tab {
+            li {
+                width: 25%;
+                @include md {
+                    width: 100px;
+                };
+            }
+        }
+
+        .ih-tab-content {
+            .ih-tab-collection-stay {
+                .ih-item {
+                    margin-bottom: 30px;
+
+                    &:nth-child(2n) {
+                        @include md {
+                            margin-top: 60px;
+                        };
+                    }
+
+                    .ih-card {
+                        .ih-img {
+                            @include ratio(84%);
+
+                            figcaption {
+                                @include position(absolute,bottom,0,left,0);
+                                width: 100%;
+                                @include font(13px,45px,#fff);
+                                padding: 0 10px;
+                                height: 45px;
+                                overflow: hidden;
+                                background: rgba(55,59,72,0.8);
+                            }
+                        }
+
+                        .ih-information {
+                            padding: 10px;
+                            background: #fff;
+
+                            .ih-point {
+                                @include font(16px,20px,$color-black);
+                                margin: 30px 0 50px;
+
+                                span {
+                                    color: $color-red;
+                                }
+                            }
+
+                            .ih-origin {
+                                @include font(13px,16px,$color-gray);
+                            }
+
+                            .ih-book {
+                                @include position(absolute,bottom,0,right,-10px);
+                                width: 45%;
+                                @include lg {
+                                    width: 55%;
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+
+            .ih-tab-collection-food {}
+
+            .ih-tab-collection-traffic {}
+
+            .ih-tab-collection-entertainment {}
+        }
+    }
+}

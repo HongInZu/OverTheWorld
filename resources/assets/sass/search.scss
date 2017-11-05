@@ -1,0 +1,348 @@
+@import "setting";
+@import "theme";
+@import "common";
+
+.ih-page-search {
+    .ih-section-sidebar {
+        @include font(13px,18px,$color-gray);
+
+        .ih-heading {
+            @include font(18px,24px,$color-black);
+            margin-bottom: 15px;
+
+            button {
+                color: $color-blue;
+            }
+        }
+
+        .ih-form {
+            @include smbelow {
+                display: none;
+                @include position(fixed,top,$header-height-mobile,left,0);
+                z-index: 999;
+                width: 100%;
+                height: calc(100% - #{$header-height-mobile}*2);
+                overflow: auto;
+                padding: 20px;
+                background: $color-gray-bg;
+            };
+
+            .ih-action {
+                @include position(fixed,top,0,left,0);
+                width: 100%;
+                height: $header-height-mobile;
+                background: #fff;
+                @include box(padding,0 20px,border,0,margin-bottom,10px);
+
+                .ih-button-close {
+                    @include font(16px,$header-height-mobile,$color-black);
+
+                    i {
+                        color: $color-blue;
+                        margin-right: 5px;
+                    }
+                }
+
+                .ih-button-reset {
+                    @include font(13px,$header-height-mobile,$color-blue);
+                }
+            }
+
+            .form-group {
+                @include box(padding-bottom,15px,border-bottom,1px solid $color-gray-light,margin-bottom,25px);
+            }
+
+            .ih-price {
+                margin-bottom: 50px;
+            }
+
+            .ih-price-range-bar {
+                .slider {
+                    width: 100%;
+                }
+
+                .slider-track {
+                    background: $color-gray-light;
+                }
+
+                .slider-handle,
+                .slider-selection {
+                    background: $color-blue;
+                };
+            }
+
+            .ih-star {
+                label {
+                    width: 20%;
+                    line-height: 25px;
+
+                    &:hover {
+                        color: $color-yellow;
+                    }
+
+                    input {
+                        @include position(absolute,top,0,left,0);
+                        opacity: 0;
+
+                        &:checked ~ div {
+                            color: #fff;
+                            background: $color-yellow;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+            }
+
+            .ih-checkbox {
+                label {
+                    line-height: 30px;
+
+                    &:hover {
+                        color: $color-blue;
+                    }
+
+                    input {
+                        @include position(absolute,top,0,left,0);
+                        opacity: 0;
+
+                        &:checked ~ div {
+                            color: $color-blue;
+
+                            i:before {
+                                content: "\f14a";
+                            }
+                        }
+                    }
+
+                    i {
+                        width: 12px;
+                    }
+                }
+            }
+
+            .ih-reset {
+                margin-top: -25px;
+                padding-bottom: 0;
+
+                button {
+                    line-height: 50px;
+                    width: 100%;
+                }
+            }
+
+            .ih-button-submit-mobile {
+                @include position(fixed,bottom,0,left,0);
+                @include font(16px,$header-height-mobile,#fff);
+                width: 100%;
+                background: $color-black;
+                box-shadow: 0 -5px 15px 1px #acacac;
+            }
+        }
+
+        .ih-history {
+            tr {
+                border-bottom: 1px solid $color-gray-light;
+            }
+
+            td {
+                padding: 10px 0;
+                vertical-align: top;
+
+                &:first-child {
+                    width: 40%;
+                }
+
+                &:last-child {
+                    padding-left: 15px;
+                }
+            }
+
+            .ih-name {
+                @include font(15px,25px,$color-black);
+                padding: 5px 0;
+            }
+
+            .ih-point {
+                margin-top: 20px;
+
+                span {
+                    font-size: 15px;
+                    color: $color-red;
+                }
+            }
+        }
+    }
+
+    .ih-section-result {
+        @include font(15px,20px,$color-gray);
+        @include md {
+            padding-left: 10px;
+        };
+
+        .ih-condition-toggle {
+            @include font(18px,35px,$color-black);
+            @include box(padding,5px 0,border-bottom,1px solid $color-gray,margin-bottom,15px);
+            width: 100%;
+
+            i {
+                color: $color-blue;
+                margin-right: 5px;
+            }
+        }
+
+        .ih-total {
+            @include font(18px,30px,$color-blue);
+            margin-bottom: 15px;
+
+            span {
+                font-size: 16px;
+            }
+        }
+
+        .ih-condition {
+            margin-bottom: 25px;
+
+            span {
+                color: $color-blue;
+                @include box(padding,5px 10px,border,1px solid $color-black,margin,0 3px 10px);
+                border-radius: 5px;
+            }
+        }
+
+        .ih-sort {
+            @include box(padding-bottom,15px,border-bottom,1px solid $color-gray,margin-bottom,25px);
+
+            button {
+                @include font(18px,24px,$color-black);
+                margin: 0 10px;
+
+                i {
+                    color: $color-gray;
+                }
+            }
+        }
+
+        .ih-list {
+            margin-bottom: 35px;
+
+            table {
+                margin-bottom: 20px;
+
+                td {
+                    vertical-align: top;
+                    padding: 20px;
+                    @include smbelow {
+                        padding: 20px 10px;
+                    };
+                }
+
+                .ih-picture {
+                    @include imgCover(center,padding-box);
+                    width: 30%;
+                    @include xs {
+                        width: 120px;
+                    };
+                }
+
+                .ih-information {
+                    background: #fff;
+
+                    .ih-name {
+                        @include font(18px,24px,$color-black);
+                    }
+
+                    .ih-star {
+                        margin: 10px 0;
+                    }
+
+                    .ih-address {
+                        margin-bottom: 10px;
+
+                        i {
+                            color: $color-blue;
+                            margin-left: 5px;
+                        }
+                    }
+
+                    .ih-tag {
+                        @include position(absolute,top,0,right,0);
+                        @include font(13px,18px,#fff);
+                        @include flex(center,center);
+                        padding: 5px;
+                        width: 45px;
+                        height: 45px;
+
+                        &.ih-black {
+                            background: $color-black;
+                        }
+
+                        &.ih-blue-dark {
+                            background: $color-blue-dark;
+                        }
+
+                        &.ih-red {
+                            background: $color-red;
+                        }
+                    }
+                }
+
+                .ih-last {
+                    background: $color-gray-bg;
+
+                    .ih-favorite {
+                        margin-bottom: 25px;
+                    }
+
+                    .ih-origin {
+                        margin-bottom: 10px;
+                    }
+
+                    .ih-point {
+                        color: $color-black;
+                        margin-bottom: 15px;
+
+                        span {
+                            font-size: 20px;
+                            color: $color-red;
+                        }
+                    }
+                }
+            }
+        }
+
+        .ih-pagination {
+            ul {
+                display: table;
+                @include font(13px,25px,$color-black);
+
+                .ih-number {
+                    &.ih-active,
+                    &:hover {
+                        color: $color-blue;
+                    }
+
+                    &:not(.ih-last) {
+                        border-right: 1px solid $color-gray;
+                    }
+
+                    a {
+                        padding: 0 15px;
+                    }
+                }
+
+                .ih-nav {
+                    color: #fff;
+                    margin: 0 10px;
+                    background: $color-gray;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+
+                    &:hover {
+                        background: $color-blue;
+                    }
+                }
+            }
+        }
+    }
+}

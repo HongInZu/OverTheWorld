@@ -1,0 +1,385 @@
+@import "setting";
+@import "theme";
+@import "common";
+
+.ih-page-hotel {
+    .ih-section-introduce {
+        @include md {
+            margin-bottom: 30px;
+        };
+
+        .ih-name {
+            @include font(22px,32px,$color-black);
+            margin-bottom: 15px;
+
+            .ih-star {
+                @include md {
+                    display: inline-block;
+                };
+            }
+        }
+
+        .ih-address {
+            @include font(15px,22px,$color-blue);
+            margin-bottom: 30px;
+        }
+
+        .ih-container-custom {
+            @include smbelow {
+                padding: 0;
+            };
+        }
+
+        .ih-picture {
+            &:before {
+                @include md {
+                    content: "";
+                    @include position(absolute,bottom,0,left,0);
+                    z-index: 9;
+                    width: 100%;
+                    height: 10px;
+                    background: $color-gray-bg;
+                };
+            }
+
+            .ih-cover {
+                .ih-img {
+                    @include imgCover(center,padding-box);
+                    @include md {
+                        height: calc(100% - 10px);
+                    };
+                    @include smbelow {
+                         @include ratio(65%);
+                        margin-bottom: 10px;
+                    };
+                }
+            }
+
+            .ih-album {
+                @include smbelow {
+                     @include box(padding,0,border,0,margin-bottom,35px);
+                    width: calc(100% + 10px);
+                };
+
+                .ih-item {
+                    border: 0;
+                    @include md {
+                        margin-bottom: 10px;
+                    };
+                    @include smbelow {
+                        margin-right: 10px;
+                    };
+
+                    .ih-img {
+                        @include ratio(55%);
+                    }
+                }
+
+                .slick-arrow {
+                    position: absolute;
+                    z-index: 9;
+                    @include font(20px,30px,$color-blue);
+                    font-weight: bolder;
+                    background: #fff;
+                    opacity: 0.5;
+                    @include md {
+                        left: 0;
+                        width: 100%;
+                    };
+                    @include smbelow {
+                        top: 0;
+                        width: 30px;
+                        height: 100%;
+                    };
+
+                    &:hover {
+                        opacity: 1;
+                    }
+
+                    &.ih-prev {
+                        @include md {
+                            top: 0;
+                        };
+                        @include smbelow {
+                            left: 0;
+                        };
+                    }
+
+                    &.ih-next {
+                        @include md {
+                            bottom: 10px;
+                        };
+                        @include smbelow {
+                            right: 10px;
+                        };
+                    }
+                }
+            }
+        }
+
+        .ih-information {
+            @include smbelow {
+                padding: 0 10px;
+            };
+
+            .ih-favorite {
+                @include md {
+                     @include box(padding,20px 0 10px,border-bottom,1px solid $color-gray,margin-bottom,20px);
+                };
+                @include smbelow {
+                    float: right;
+                };
+            }
+
+            .ih-title {
+                @include font(20px,24px,$color-black);
+                margin-bottom: 15px;
+            }
+
+            .ih-trip-advisor {
+                @include font(16px,22px,$color-gray);
+                margin-bottom: 25px;
+                @include smbelow {
+                    padding-bottom: 25px;
+                    border-bottom: 1px solid $color-gray;
+                };
+            }
+
+            .ih-map {
+                background: $color-gray-light;
+                height: 180px;
+                margin-bottom: 15px;
+                @include smbelow {
+                    margin-left: -20px;
+                    margin-right: -20px;
+                };
+            }
+
+            .ih-link {
+                @include font(12px,16px,$color-blue);
+            }
+        }
+    }
+
+    .ih-section-room {
+        @include font(15px,20px,$color-black);
+        margin-bottom: 40px;
+
+        .ih-heading {
+            @include font(16px,50px,#fff);
+            padding: 0 30px;
+            background: $color-black;
+            @include smbelow {
+                padding: 0 10px;
+            };
+        }
+
+        table {
+            background: #fff;
+
+            .ih-font-blue {
+                color: $color-blue;
+            }
+
+            .ih-origin {
+                color: $color-gray;
+            }
+
+            .ih-point {
+                span {
+                    font-size: 22px;
+                    color: $color-red;
+                    @include smbelow {
+                        font-size: 16px;
+                    };
+                }
+            }
+
+            .ih-book {
+                @include font(16px,40px,#fff);
+                background: $color-blue;
+                width: 100%;
+                min-width: 80px;
+                @include sm {
+                    margin-top: 35px;
+                };
+                @include smbelow {
+                    font-size: 13px;
+                };
+            }
+
+            &.ih-room-pc {
+                td,
+                th {
+                    padding: 10px 30px;
+                    @include sm {
+                        padding: 10px;
+                    };
+                }
+
+                thead {
+                    border-bottom: 1px solid $color-gray-light;
+
+                    th {
+                        white-space: nowrap;
+                    }
+                }
+
+                tbody {
+                    tr {
+                        border-bottom: 1px solid $color-gray-light;
+                    }
+
+                    td {
+                        &:not(:first-child) {
+                            padding-top: 25px;
+                        }
+
+                        &:not(:last-child) {
+                            vertical-align: top;
+                            border-right: 1px solid $color-gray-light;
+                        }
+                    }
+
+                    .ih-last {
+                        background: $color-gray-bg;
+                        @include sm {
+                            padding: 10px;
+                        };
+                        @include md {
+                            padding: 20px !important;
+                        };
+                    }
+
+                    li {
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+
+            &.ih-room-mobile {
+                font-size: 12px;
+
+                td {
+                    padding: 10px;
+
+                    &:first-child {
+                        width: 55%;
+                    }
+
+                    &:nth-child(2) {
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+
+                    &.ih-detail {
+                        padding-top: 25px;
+                        padding-bottom: 0;
+                    }
+                }
+
+                .ih-top {
+                    vertical-align: top;
+                    border-bottom: 1px solid $color-gray-light;
+                }
+
+                .ih-bottom {
+                    border-bottom: 5px solid $color-gray-bg;
+                }
+
+                li {
+                    margin: 15px 0;
+                }
+
+                .ih-book {
+                    @include position(absolute,top,50%,right,10px);
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+
+    .ih-section-information {
+        .ih-tab {
+            @include smbelow {
+                margin: 0 -10px;
+            };
+
+            li {
+                width: 50%;
+                @include md {
+                    width: 180px;
+                };
+            }
+        }
+
+        .ih-tab-content {
+            @include font(16px,22px,$color-gray);
+
+            .ih-tab-information {
+                .ih-row {
+                    @include md {
+                        display: flex;
+                        justify-content: space-between;
+                    };
+
+                    &:after {
+                        @include md {
+                            display: none;
+                        };
+                    }
+                }
+
+                .ih-col {
+                    @include box(padding,30px 20px,border-bottom,1px solid $color-gray-light,margin,0);
+                    @include smbelow {
+                        padding: 20px;
+                    };
+                }
+
+                .ih-title {
+                    @include md {
+                        width: 180px;
+                    };
+
+                    h3 {
+                        @include font(18px,24px,$color-black);
+                        font-weight: bolder;
+
+                        button {
+                            font-size: 24px;
+                            color: $color-blue;
+                        }
+                    }
+                }
+
+                .ih-content {
+                    @include md {
+                        width: calc(100% - 200px);
+                    };
+                    @include smbelow {
+                        display: none;
+                    };
+
+                    h4 {
+                        @include font(18px,22px,$color-blue);
+                        margin-bottom: 10px;
+                    }
+
+                    p,
+                    ul {
+                        margin-bottom: 15px;
+                    }
+
+                    ul {
+                        padding-left: 20px;
+                    }
+
+                    li:not(:last-child) {
+                        margin-right: 25%;
+                    }
+                }
+            }
+        }
+    }
+}

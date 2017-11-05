@@ -1,0 +1,35 @@
+.ih-component-search {
+    $box-shadow: 0 5px 15px -5px #555;
+    @include box(padding-top,15px,border,0,margin-bottom,65px);
+    box-shadow: $box-shadow;
+    background: $color-black;
+    @include smbelow {
+        margin-bottom: 45px;
+    };
+
+    form {
+        @include md {
+            max-width: 800px;
+        };
+    }
+
+    .ih-theme-button-search-toggle {
+        @include position(absolute,bottom,-22px,left,50%);
+        transform: translateX(-50%);
+        @include font(16px,22px,$color-blue);
+        border-radius: 0 0 5px 5px;
+        box-shadow: $box-shadow;
+        width: 80px;
+        background: $color-black;
+
+        &:hover i {
+            animation-name: flash;
+            animation-duration: 1.5s;
+            animation-iteration-count: 1;
+        }
+
+        i {
+            vertical-align: super;
+        }
+    }
+}

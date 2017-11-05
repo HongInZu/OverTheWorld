@@ -1,0 +1,110 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+textarea {
+    resize: none;
+}
+
+label {
+    font-weight: normal;
+}
+
+hr {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+html {
+    overflow-y: scroll;
+    /* overflow-x: hidden; */
+}
+
+body {
+    font-family: $font-family;
+    font-size: 16px;
+    color: $color-black;
+}
+
+a,
+a:focus,
+a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+div:after,
+footer:after,
+form:after,
+header:after,
+main:after,
+nav:after,
+ol:after,
+section:after,
+ul:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+/* third */
+.container {
+    @include sm {
+        width: 100%;
+    };
+}
+
+.container,
+[class*="col-"] {
+    padding: 0 10px;
+}
+
+.row {
+    margin: 0 -10px;
+}
+
+.form-control {
+    height: $form-element-height;
+}
+
+.select2 {
+    .select2-selection {
+        height: $form-element-height;
+
+        .select2-selection__rendered {
+            line-height: $form-element-height;
+        }
+
+        .select2-selection__arrow {
+            display: none;
+        }
+    }
+}
+
+.xdsoft_datetimepicker {
+    .xdsoft_calendar td {
+        &.xdsoft_current,
+        &:hover {
+            background: $color-blue !important;
+        }
+    }
+}
