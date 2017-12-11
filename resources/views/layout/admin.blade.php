@@ -97,8 +97,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/admin/manage/ball-nba"><i class="fa fa-circle-o"></i>美國職籃 NBA</a></li>
-            <li><a href="/admin/manage/ball-nba"><i class="fa fa-circle-o"></i>美國職棒 MLB</a></li>
-            <li><a href="/admin/manage/ball-nba"><i class="fa fa-circle-o"></i>足球</a></li>
+            <li><a href="/admin/manage/ball-mlb"><i class="fa fa-circle-o"></i>美國職棒 MLB</a></li>
+            <li><a href="/admin/manage/ball-soccer"><i class="fa fa-circle-o"></i>足球</a></li>
           </ul>
         </li>
       </ul>

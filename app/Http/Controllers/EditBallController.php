@@ -68,7 +68,7 @@ class EditBallController extends Controller
                                             'game' => $game_predict,
                                             ]);
         } else {
-            return view('admin.edit.nba', ['ball' => []]);
+            return view('admin.edit.nba', ['game' => []]);
         }
     }
 }

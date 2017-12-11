@@ -23,6 +23,8 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $table = 'users';
 
+    protected $connection = 'mysql';
+
     /**
      * The attributes that are mass assignable.
      *

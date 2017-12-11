@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="/dist/css/dropzone.css">
   <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
   <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+  <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
   <link href="https://unpkg.com/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -128,6 +129,55 @@
         <!-- /.modal-dialog -->
       </div>
 
+      <div class="modal fade" id="modal-user">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">編輯會員資格</h4>
+            </div>
+              
+              <form id='user_permission_form'>
+              <input type="hidden" name="user_id">
+
+              <div class="col-md-12">
+
+              <div class="form-group">
+                <label>會員資格</label>
+                <select class="form-control" name="user_type">
+                  <option value="member">一般會員</option>
+                  <option value="user">付費會員</option>
+                  <option value="vip">VIP 會員</option>
+                  <option value="admin">管理員</option>
+                </select>
+              </div>
+
+
+              <div class="form-group">
+                <label>有效日期</label>
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" name="until_date" value="" id="datepicker" required>
+                </div>
+                <!-- /.input group -->
+              </div>
+
+              </div>
+              </form>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">關閉</button>
+              <button type="button" id="save-user-permission" class="btn btn-primary">儲存變更</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+
 @section('script')
   <!-- jQuery 3 -->
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -151,6 +201,7 @@
   <script src="/bower_components/datatables.net/js/buttons.html5.min.js"></script>
   <script src="/dist/js/dropzone.js"></script>
   <script src="/dist/js/dropzone-amd-module.js"></script>
+  <script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
   <!-- page script -->
   <script>
 
@@ -192,6 +243,7 @@
         dataType: "json",
         success: function(data) {
             alert("儲存成功");
+            location.reload();
         },
         error: function(jqXHR) {
             alert("發生錯誤, 請重新操作");
@@ -211,6 +263,7 @@
               changeChecked()
               changeRadio($("[name=game_predict]"), data.game_predict)
               changeRadio($("[name=game_result]"), data.game_result)
+              $('[name=game_predict_id]').val(data.id)
           },
           error: function(jqXHR) {
               alert("發生錯誤, 請重新操作");
@@ -232,6 +285,11 @@
     } else {
       $(this).val(0);
     }
+  })
+
+  //Date picker
+  $('#datepicker').datepicker({
+    autoclose: true
   })
 
   function changeChecked() 
@@ -261,6 +319,41 @@
     $("[name='game_bigger_score']").val(data.game_bigger_score);
     $("[name='game_smaller_score']").val(data.game_smaller_score);
   }
+
+  $(".user_permission_button").click(function() {
+      $.ajax({
+          type: "post",
+          headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+          data: {id: $(this).siblings("#user_id").val()},
+          url: "/admin/manage/user-permission",
+          dataType: "json",
+          success: function(data) {
+              $('[name=user_type] option[value=' + data.user_type + ']').prop('selected', true)
+              $('[name=until_date]').val(data.until_date)
+              $('[name=user_id]').val(data.id)
+          },
+          error: function(jqXHR) {
+              alert("發生錯誤, 請重新操作");
+          }
+      })
+  })
+
+  $("#save-user-permission").click(function() {
+    $.ajax({
+        type: "post",
+        headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+        data: $('#user_permission_form').serialize(),
+        url: "/admin/manage/save-user-permission",
+        dataType: "json",
+        success: function(data) {
+            alert("儲存成功");
+            location.reload();
+        },
+        error: function(jqXHR) {
+            alert("發生錯誤, 請重新操作");
+        }
+    })
+  })
 
   </script>
 @endsection

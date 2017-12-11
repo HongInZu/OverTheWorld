@@ -33,54 +33,35 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 @endsection
 
-@section('content-header')
-@section('content-header-sub', '球盤分析')
+@section('content-header', '新增管理員')
 
 @section('content')
   <div class="row">
-    <form role="form" action="/admin/edit-ball/todb" method="post">
+    <form role="form" action="/admin/edit-user/todb" method="post">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-      <input type="hidden" name="id" value="{{ $game['id'] or '-1' }}">
-      <input type="hidden" name="game_type" value="@yield('game-type')">
+      <input type="hidden" name="id" value="{{ $user['id'] or '-1' }}">
+      <input type="hidden" name="until_date" value="2038-01-09 00:00:00">
+      <input type="hidden" name="user_type" value="admin">
       <div class="col-md-12">
         <!-- general form elements disabled -->
         <div class="box box-info">
           <div class="box-header with-border">
-            <h3 class="box-title">開盤資訊</h3>
+            <h3 class="box-title">會員資料</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
               <!-- text input -->
               <div class="form-group">
-                <label>讓方</label>
-                <input type="text" class="form-control" name="bigger" placeholder="讓方" value="{{$game['bigger'] or ''}}" required>
+                <label>帳號</label>
+                <input type="text" class="form-control" name="mobile_phone" placeholder="帳號" value="{{$user['mobile_phone'] or ''}}" required>
               </div>
               <div class="form-group">
-                <label>受讓方</label>
-                <input type="text" class="form-control" name="smaller" placeholder="受讓方" value="{{$game['smaller'] or ''}}" required>
-              </div>
-
-              <div class="form-group">
-                <label>球賽日期</label>
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" name="game_date" value="{{$game['game_date'] or ''}}" id="datepicker" required>
-                </div>
-                <!-- /.input group -->
+                <label>密碼</label>
+                <input type="password" class="form-control" name="password" placeholder="密碼" required>
               </div>
               <div class="form-group">
-                <label>盤口</label>
-                <div class="input-group">
-                  <span class="input-group-addon">
-                    @if (!isset($game['handicap_type']))
-                     {{$game['handicap_type'] = ''}}
-                    @endif
-                    <input type="checkbox" value="1" name="handicap_type" {{($game['handicap_type'] == 1) ? 'checked' : ''}}>
-                  </span>
-                  <input type="text" class="form-control" name="handicap" value="{{$game['handicap'] or ''}}" placeholder="勾選為平盤. Ex. 1-12 or 2+11" required>
-                </div>
+                <label>稱呼</label>
+                <input type="text" class="form-control" name="name" placeholder="稱呼" value="{{$user['name'] or ''}}" required>
               </div>
             <div class="box-footer">
               <button type="button" id="cancel" class="btn btn-default">取消</button>
