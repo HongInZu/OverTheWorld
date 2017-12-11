@@ -101,6 +101,7 @@
             <li><a href="/admin/manage/ball-soccer"><i class="fa fa-circle-o"></i>足球</a></li>
           </ul>
         </li>
+        <li><a href="/admin/legend-table"><i class="fa fa-users"></i> <span>新增聯盟</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

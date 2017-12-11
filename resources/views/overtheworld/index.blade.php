@@ -1,7 +1,8 @@
 @extends('overtheworld.layout')
 
 @section('content-table')
-    <table id="example2" class="table table-bordered table-striped">
+  <div class="tab-pane active" id="home1" role="tabpanel">
+    <table class="table table-bordered table-striped">
     <thead>
     <tr>
       <th>編號</th>
@@ -47,4 +48,5 @@
     </tr>
     </tfoot>
     </table>
+  </div>
 @endsection

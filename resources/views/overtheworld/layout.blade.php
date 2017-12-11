@@ -12,6 +12,10 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
+    <link href="/js/DataTables/datatables.min.css" rel="stylesheet" />
+    <link href="/js/DataTables/AutoFill-2.2.2/css/autoFill.bootstrap.min.css" rel="stylesheet" />
+    <link href="/js/DataTables/AutoFill-2.2.2/css/autoFill.dataTables.min.css" rel="stylesheet" />
+
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -264,6 +268,10 @@
 </body>
 <!--   Core JS Files   -->
 <script src="/assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/DataTables/datatables.min.js"></script>
+<script type="text/javascript" src="js/DataTables/AutoFill-2.2.2/js/dataTables.autoFill.min.js"></script>
+<script type="text/javascript" src="js/DataTables/AutoFill-2.2.2/js/dataTables.autoFill.min.js"></script>
+<script type="text/javascript" src="js/DataTables/AutoFill-2.2.2/js/autoFill.bootstrap.min.js"></script>
 <script src="/assets/js/core/popper.min.js" type="text/javascript"></script>
 <script src="/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
@@ -277,6 +285,9 @@
 <script type="text/javascript">
     $(document).ready(function() {
         // the body of this function is in assets/js/now-ui-kit.js
+        $('.table-striped').DataTable({
+            autoFill: true
+        });
         nowuiKit.initSliders();
     });
 

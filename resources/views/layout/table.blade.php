@@ -224,6 +224,24 @@
         ]
       } );
 
+      $('#legend').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                text: '<i class="fa fa-files-o"></i>',
+                titleAttr: '新增商品',
+                action: function ( e, dt, node, config ) {
+                    window.location.href = "/admin/add/legend"
+                }
+            },
+            {
+                extend:    'excelHtml5',
+                text:      '<i class="fa fa-file-excel-o"></i>',
+                titleAttr: 'Excel'
+            }
+        ]
+      } );
+
       $('#example2').DataTable({
         'paging'      : true,
         'lengthChange': false,

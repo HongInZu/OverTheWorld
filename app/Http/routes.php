@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,23 @@ Route::get('admin', function () {
 
 Route::controller('admin/manage', 'ManageController');
 Route::controller('admin/manage-item', 'ManageItemController');
-Route::controller('admin/manage-hotel', 'ManageHotelController');
 Route::controller('admin/edit-ball', 'EditBallController');
 Route::controller('admin/edit-user', 'EditUserController');
+Route::get('admin/legend-table', 'AddLegendController@getLegendTable');
+Route::get('admin/add/legend', function() {
+    return view('admin.add.legend');
+});
+Route::post('/admin/add/legend-todb', function(Request $request){
+	$input = $request->only('name', 'code');
+	$legend = new App\Legend();
+	foreach ($input as $key => $value) {
+		if(!empty($value)) {
+			$legend->{$key} = $value;
+		}
+	}
+	$legend->save();
+	return redirect('admin/legend');
+});
 // 認證路由...
 Route::controller('', 'IndexController');
 
