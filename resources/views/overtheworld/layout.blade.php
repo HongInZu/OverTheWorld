@@ -117,18 +117,11 @@
                             <!-- Tabs with Background on Card -->
                             <div class="card">
                                 <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
+                                    @foreach($legends as $key => $legend)
                                     <li class="nav-item">
-                                        <a class="nav-link active" data-toggle="tab" href="#home1" role="tab">Home</a>
+                                        <a class="nav-link {{($key==0)?'active':''}} " data-toggle="tab" href="#{{$legend['code']}}" role="tab">{{$legend['name']}}</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#profile1" role="tab">Profile</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#messages1" role="tab">Messages</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#settings1" role="tab">Settings</a>
-                                    </li>
+                                    @endforeach
                                 </ul>
                                 <div class="card-body">
                                     <!-- Tab panes -->

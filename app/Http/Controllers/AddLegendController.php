@@ -10,6 +10,11 @@ use Carbon\Carbon;
 
 class AddLegendController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth.login');
+    }
+    
     public function getLegendTable()
     {
         return view('admin.manage.legend', ['results' => Legend::get()]);

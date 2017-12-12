@@ -206,14 +206,15 @@
   <script>
 
     $(function () {
-      $('#example1').DataTable( {
+
+      $('#legend').DataTable( {
         dom: 'Bfrtip',
         buttons: [
             {
                 text: '<i class="fa fa-files-o"></i>',
                 titleAttr: '新增商品',
                 action: function ( e, dt, node, config ) {
-                    window.location.href = "/admin/edit-@yield('edit-type')/@yield('method-type')"
+                    window.location.href = "/admin/add/legend"
                 }
             },
             {
@@ -224,14 +225,14 @@
         ]
       } );
 
-      $('#legend').DataTable( {
+      $('#example1').DataTable( {
         dom: 'Bfrtip',
         buttons: [
             {
                 text: '<i class="fa fa-files-o"></i>',
-                titleAttr: '新增商品',
+                titleAttr: '新增會員',
                 action: function ( e, dt, node, config ) {
-                    window.location.href = "/admin/add/legend"
+                    window.location.href = "/admin/edit-user/user"
                 }
             },
             {

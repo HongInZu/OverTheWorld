@@ -5,13 +5,19 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\GamePredict;
 use App\User;
+use App\Legend;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
-
+use Auth;
 
 class ManageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth.login');
+    }
+
     /**
      * 回應對 GET /manageitem/food 的請求
      */
@@ -25,10 +31,17 @@ class ManageController extends Controller
         return view('admin.manage.order', ['orders' => Order::get()]);
     }
 
-    public function getBallNba()
+    public function getBall()
     {
-        return view('admin.manage.ball-nba', ['results' => GamePredict::get()]);
+        $legend = Legend::first();
+        return view('admin.manage.ball', ['results' => GamePredict::where('game_type', $legend['code'])->get(), 'legends' => Legend::get(), 'ball' => $legend ]);
     }
+    public function postBall(Request $request)
+    {
+        $legend = Legend::where('code', $request->legend)->first();
+        return view('admin.manage.ball', ['results' => GamePredict::where('game_type', $legend['code'])->get(), 'legends' => Legend::get(), 'ball' => $legend ]);
+    }
+
 
     public function getUser(Request $request)
     {

@@ -1,11 +1,20 @@
 @extends('layout.manage')
 @section('edit-type', 'ball')
-@section('method-type', 'nba')
-@section('content-header', 'NBA')
-@section('content-header-sub', '賽事分析')
-
+@section('content-header', '賽事分析')
 @section('content-table')
-    <table id="example1" class="table table-bordered table-striped">
+    <div class="form-group">
+      <label>聯盟選單</label>
+      <form action="/admin/manage/ball" id='legend-select' method="post">
+        {!! Form::token() !!}
+        <select class="form-control" name="legend" onchange="$('#legend-select').submit()">
+          @foreach ($legends as $legend)
+          <option value="{{$legend['code']}}" {{($legend['code'] == $ball['code']) ? 'selected' : ''}}>{{$legend['name']}}</option>
+          @endforeach
+        </select>
+      </form>
+    </div>
+
+    <table id="legend-table" class="table table-bordered table-striped">
     <thead>
     <tr>
       <th>編號</th>
@@ -54,4 +63,29 @@
     </tr>
     </tfoot>
     </table>
+@endsection
+
+@section('script')
+  @parent
+  <script type="text/javascript">
+    $(function () {
+      $('#legend-table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                text: '<i class="fa fa-files-o"></i>',
+                titleAttr: '新增商品',
+                action: function ( e, dt, node, config ) {
+                    window.location.href = "/admin/add-@yield('edit-type')/{{$ball['code']}}"
+                }
+            },
+            {
+                extend:    'excelHtml5',
+                text:      '<i class="fa fa-file-excel-o"></i>',
+                titleAttr: 'Excel'
+            }
+        ]
+      } )
+    });
+  </script>
 @endsection

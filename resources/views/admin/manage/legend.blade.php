@@ -24,8 +24,8 @@
         <td>{{$result->created_at}}</td>
         <td>{{$result->updated_at}}</td>
         <td>
-          <a class="btn btn-app" ><i class="fa fa-bar-chart"></i> 編輯</a>
-        </td>
+<!--           <a class="btn btn-app" ><i class="fa fa-bar-chart"></i> 編輯</a>
+ -->        </td>
         <form>
       </tr>
       @endforeach

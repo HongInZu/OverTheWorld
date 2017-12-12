@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Carbon\Carbon;
+use Auth;
 
 class EditUserController extends Controller
 {
@@ -23,6 +24,15 @@ class EditUserController extends Controller
         }    
     }
 
+    public function postLogin(Request $request)
+    {
+        if (Auth::attempt(['mobile_phone' => $request->account, 'password' => $request->password])) {
+            return redirect('/admin');
+        } else {
+            return view('admin.login');
+        }
+    }
+
     /**
      * 回應對 GET /edititem/todb 的請求
      */
@@ -34,7 +44,7 @@ class EditUserController extends Controller
             $game_predict = new User;
         }
         $requestArr = ['mobile_phone', 'password', 'name', 'user_type', 'until_date'];
-        $request->password = md5($request->password);
+        $request->password = bcrypt($request->password);
         foreach ($requestArr as $key => $value) {
             if (isset($request->{$value})) {
               $game_predict->{$value} = $request->{$value};

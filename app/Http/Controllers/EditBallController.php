@@ -9,12 +9,9 @@ use Carbon\Carbon;
 
 class EditBallController extends Controller
 {
-    /**
-     * 回應對 GET /edititem/1 的請求
-     */
-    public function getIndex($id)
+    public function __construct()
     {
-        //
+        $this->middleware('auth.login');
     }
 
     /**
@@ -50,25 +47,9 @@ class EditBallController extends Controller
             }
         }
         if ($game_predict->save()) {
-            return redirect("admin/manage/ball-{$request->game_type}");
+            return redirect("admin/manage/ball");
         } else {
-            return redirect("admin/manage/ball-{$request->game_type}");
-        }
-    }
-
-    /**
-     * 回應對 GET /edit/food/1 的請求
-     */
-    public function getNba($id = null)
-    {
-        if ($id != null) {
-            $game_predict = GamePredict::find($id);
-            $game_predict->game_date = Carbon::parse($game_predict->game_date)->format('m/d/Y');
-            return view('admin.edit.nba', [
-                                            'game' => $game_predict,
-                                            ]);
-        } else {
-            return view('admin.edit.nba', ['game' => []]);
+            return redirect("admin/manage/ball");
         }
     }
 }

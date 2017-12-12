@@ -41,12 +41,12 @@
     <form role="form" action="/admin/edit-ball/todb" method="post">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <input type="hidden" name="id" value="{{ $game['id'] or '-1' }}">
-      <input type="hidden" name="game_type" value="@yield('game-type')">
+      <input type="hidden" name="game_type" value="{{ $legend['code'] }}">
       <div class="col-md-12">
         <!-- general form elements disabled -->
         <div class="box box-info">
           <div class="box-header with-border">
-            <h3 class="box-title">開盤資訊</h3>
+            <h3 class="box-title">開盤資訊 - {{ $legend['name'] }}</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">

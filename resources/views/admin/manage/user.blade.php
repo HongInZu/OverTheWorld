@@ -11,7 +11,7 @@
       <th>編號</th>
       <th>帳號</th>
       <th>姓名</th>
-      <th>LineID</th>
+      <th>wechat</th>
       <th>建立日期</th>
       <th>最新儲存時間</th>  
       <th>功能</th>     
@@ -23,7 +23,7 @@
         <td>{{$key+1}}</td>
         <td>{{$user->name}}</td>
         <td>{{$user->mobile_phone}}</td>
-        <td>{{$user->Line}}</td>
+        <td>{{$user->wechat}}</td>
         <td>{{$user->created_at}}</td>
         <td>{{$user->updated_at}}</td>
         <td>

@@ -1,7 +1,6 @@
 @extends('layout.edit')
 
-@section('content-header', 'NBA')
-@section('game-type', 'nba')
+@section('content-header', '足球聯盟')
 @section('item-property', '餐廳屬性')
 @section('item-option')
   <option value="1">吃到飽</option>

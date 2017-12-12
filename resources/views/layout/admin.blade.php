@@ -88,20 +88,11 @@
         <li class="header">主選單</li>
         <li><a href="/admin/manage/order"><i class="fa fa-usd"></i> <span>訂單管理</span></a></li>
         <li><a href="/admin/manage/user"><i class="fa fa-users"></i> <span>會員管理</span></a></li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-bar-chart"></i> <span>賽事分析</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="/admin/manage/ball-nba"><i class="fa fa-circle-o"></i>美國職籃 NBA</a></li>
-            <li><a href="/admin/manage/ball-mlb"><i class="fa fa-circle-o"></i>美國職棒 MLB</a></li>
-            <li><a href="/admin/manage/ball-soccer"><i class="fa fa-circle-o"></i>足球</a></li>
-          </ul>
-        </li>
-        <li><a href="/admin/legend-table"><i class="fa fa-users"></i> <span>新增聯盟</span></a></li>
+        <li><a href="/admin/manage/ball"><i class="fa fa-bar-chart"></i> <span>球板分析</span></a></li>
+        <li><a href="/admin/legend-table"><i class="fa fa-get-pocket"></i> <span>新增聯盟</span></a></li>
+        @if(Auth::user()['user_type'] == 'root')
+        <li><a href="/admin/legend-table"><i class="fa fa-bomb"></i> <span>緊急關閉所有權限</span></a></li>
+        @endif
       </ul>
     </section>
     <!-- /.sidebar -->

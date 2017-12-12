@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Carbon\Carbon;
 use App\GamePredict;
-
+use Auth;
 
 class IndexController extends Controller
 {
@@ -15,7 +15,15 @@ class IndexController extends Controller
      */
     public function getIndex()
     {
-        return view('overtheworld.index', ['results' => GamePredict::get()]);
+    	$user = Auth::user();
+    	if ($user) {
+    		if ($user['user_type'] != 'member' || Carbon::now()->lt($user['until_date'])) {
+    			$permission = true;
+    		}
+    	} else {
+    		$permission = false;
+    	}
+        return view('overtheworld.index', ['results' => GamePredict::get()->groupBy('game_type'), 'legends' => \App\Legend::get(), 'permission' => $permission]);
     }
 
 }
