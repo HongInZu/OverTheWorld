@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>馳名天下國際賽事分析網</title>
+    <title>驰名天下国际赛事分析网</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -32,7 +32,7 @@
         <div class="container">
             <div class="navbar-translate">
                 <a class="navbar-brand" href="http://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip" title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank">
-                    <p>馳名天下</p>
+                    <p>驰名天下</p>
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-bar bar1"></span>
@@ -45,20 +45,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0)" onclick="scrollToDownload()">
                             <i class="now-ui-icons business_bank"></i>
-                            <p>匯款資訊</p>
+                            <p>汇款资讯</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0)" onclick="scrollToGame()" target="_blank">
                             <i class="now-ui-icons business_chart-bar-32"></i>
-                            <p>賽事分析</p>
+                            <p>赛事分析</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         @if(!$isLogin)
                           <a class="nav-link btn btn-neutral" href="javascript:void(0)" onclick="openLoginModal();" target="_blank">
                               <i class="now-ui-icons arrows-1_share-66"></i>
-                              <p>加入我們</p>
+                              <p>加入我们</p>
                           </a>
                         @else
                           <a class="nav-link btn btn-neutral" href="/logout">
@@ -96,8 +96,8 @@
             <div class="container">
                 <div class="content-center brand">
                     <img class="n-logo" src="./assets/img/now-logo.png" alt="">
-                    <h1 class="h1-seo">馳名天下</h1>
-                    <h3>精準分析所有賽事 獲利翻盤就趁現在</h3>
+                    <h1 class="h1-seo">驰名天下</h1>
+                    <h3>精准分析所有赛事 获利翻盘就趁现在</h3>
                 </div>
             </div>
         </div>
@@ -150,12 +150,12 @@
                 <div class="container">
                     <div class="row" id="modals">
                         <div class="col-md-6">
-                            <h4>匯款資訊</h4>
+                            <h4>汇款资讯</h4>
                                 <p style="font-size: 20px;">
-                                    訂單編號:361 <br>
-                                    購買方案:NPB 一天 <br>
-                                    繳款金額:500<br>
-                                    ATM虛擬帳號:銀行代號: 004 虛擬行號: 31904183623456<br>
+                                    订单编号:361 <br>
+                                    购买方案:NPB 一天 <br>
+                                    缴款金额:500<br>
+                                    ATM虚拟帐号:银行代号: 004 虚拟行号: 31904183623456<br>
                                     截止日期:2016/09/09<br>
                                 </p>
                         </div>
@@ -182,13 +182,13 @@
                                     <div class="carousel-item">
                                         <img class="d-block" src="http://media.zenfs.com/en_us/News/Reuters/2014-07-05T175309Z_304896811_TB3EA751GBX8D_RTRMADP_3_SOCCER-WORLD-M60-ARG-BEL.JPG" width="1600" height="500" alt="Second slide">
                                         <div class="carousel-caption d-none d-md-block">
-                                            <h5>一注入魂 勝利就在明日</h5>
+                                            <h5>一注入魂 胜利就在明日</h5>
                                         </div>
                                     </div>
                                     <div class="carousel-item">
                                         <img class="d-block" src="http://media.zenfs.com/en_us/News/gettyimages.com/germany-v-argentina-2014-fifa-20140713-213037-895.jpg" width="1600" height="500" alt="Third slide">
                                         <div class="carousel-caption d-none d-md-block">
-                                            <h5>成為笑到最後的那一位冠軍</h5>
+                                            <h5>成为笑到最后的那一位冠军</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -213,14 +213,14 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                             <i class="now-ui-icons ui-1_simple-remove"></i>
                         </button>
-                        <h4 class="title title-up">匯款資訊</h4>
+                        <h4 class="title title-up">汇款资讯</h4>
                     </div>
                     <div class="modal-body">
                         <p>
-                            訂單編號:361 <br>
-                            購買方案:NPB 一天 <br>
-                            繳款金額:500<br>
-                            ATM虛擬帳號:銀行代號: 004 虛擬行號: 31904183623456<br>
+                            订单编号:361 <br>
+                            购买方案:NPB 一天 <br>
+                            缴款金额:500<br>
+                            ATM虚拟帐号:银行代号: 004 虚拟行号: 31904183623456<br>
                             截止日期:2016/09/09<br>
                         </p>
                     </div>
@@ -244,8 +244,8 @@
                               <div class="form loginBox">
                                   <form method="post" action="/login-account" accept-charset="UTF-8">
                                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                  <input id="phone" class="form-control" type="text" placeholder="電話" name="phone">
-                                  <input id="password" class="form-control" type="password" placeholder="密碼" name="password">
+                                  <input id="phone" class="form-control" type="text" placeholder="电话" name="phone">
+                                  <input id="password" class="form-control" type="password" placeholder="密码" name="password">
                                   <input class="btn btn-default btn-login" type="submit" value="登入">
                                   </form>
                               </div>
@@ -256,11 +256,11 @@
                            <div class="form">
                               <form method="post" html="{:multipart=>true}" data-remote="true" action="/register" accept-charset="UTF-8">
                               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                              <input id="phone" class="form-control" type="text" placeholder="電話" name="phone" required>
+                              <input id="phone" class="form-control" type="text" placeholder="电话" name="phone" required>
                               <input id="wechat" class="form-control" type="text" placeholder="微信" name="wechat" required>
-                              <input id="password" class="form-control" type="password" placeholder="密碼" name="password" required>
-                              <input id="password_confirmation" class="form-control" type="password" placeholder="確認密碼" name="password_confirmation" required>
-                              <input class="btn btn-default btn-register" type="submit" value="建立帳號" name="commit">
+                              <input id="password" class="form-control" type="password" placeholder="密码" name="password" required>
+                              <input id="password_confirmation" class="form-control" type="password" placeholder="确认密码" name="password_confirmation" required>
+                              <input class="btn btn-default btn-register" type="submit" value="建立帐号" name="commit">
                               </form>
                               </div>
                           </div>
@@ -269,11 +269,11 @@
                   <div class="modal-footer">
                       <div class="forgot login-footer">
                           <span>想要 
-                               <a href="javascript: showRegisterForm();">建立帳號嗎</a>
+                               <a href="javascript: showRegisterForm();">建立帐号吗</a>
                           ?</span>
                       </div>
                       <div class="forgot register-footer" style="display:none">
-                           <span>已經有帳號了?</span>
+                           <span>已经有帐号了?</span>
                            <a href="javascript: showLoginForm();">登入</a>
                       </div>
                   </div>        
@@ -312,6 +312,7 @@
 <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
 <script src="/assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
 <script type="text/javascript">
+
     $(document).ready(function() {
         // the body of this function is in assets/js/now-ui-kit.js
         $('.table-striped').DataTable({
