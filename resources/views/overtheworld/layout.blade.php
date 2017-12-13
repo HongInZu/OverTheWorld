@@ -20,6 +20,10 @@
     <link href="/assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="/assets/css/demo.css" rel="stylesheet" />
+
+    <link href="login/login-register.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <script src="login/login-register.js" type="text/javascript"></script>
 </head>
 
 <body class="index-page sidebar-collapse">
@@ -45,16 +49,22 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./documentation/tutorial-components.html" target="_blank">
+                        <a class="nav-link" href="javascript:void(0)" onclick="scrollToGame()" target="_blank">
                             <i class="now-ui-icons business_chart-bar-32"></i>
                             <p>賽事分析</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-neutral" href="examples/login-page.html" target="_blank">
-                            <i class="now-ui-icons arrows-1_share-66"></i>
-                            <p>加入我們</p>
-                        </a>
+                        @if(!$isLogin)
+                          <a class="nav-link btn btn-neutral" href="javascript:void(0)" onclick="openLoginModal();" target="_blank">
+                              <i class="now-ui-icons arrows-1_share-66"></i>
+                              <p>加入我們</p>
+                          </a>
+                        @else
+                          <a class="nav-link btn btn-neutral" href="/logout">
+                              <p>登出</p>
+                          </a>
+                        @endif
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
@@ -109,7 +119,7 @@
                     </div>
                 </div>
             </div>
-            <div class="section section-tabs">
+            <div class="section section-tabs section-game">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-lg-12 col-xl-12 ml-auto mr-auto">
@@ -136,7 +146,7 @@
                 </div>
             </div>
 
-            <div class="section section-javascript" id="javascriptComponents">
+            <div class="section section-javascript section-download" id="javascriptComponents">
                 <div class="container">
                     <div class="row" id="modals">
                         <div class="col-md-6">
@@ -164,21 +174,21 @@
                                 </ol>
                                 <div class="carousel-inner" role="listbox">
                                     <div class="carousel-item active">
-                                        <img class="d-block" src="assets/img/bg1.jpg" alt="First slide">
+                                        <img class="d-block" src="http://pic.pimg.tw/worldcupvideo/1403762538-2079482990.jpg" width="1600" height="500" alt="First slide">
                                         <div class="carousel-caption d-none d-md-block">
-                                            <h5>Nature, United States</h5>
+                                            <h5>成功人士的推波手</h5>
                                         </div>
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="d-block" src="assets/img/bg3.jpg" alt="Second slide">
+                                        <img class="d-block" src="http://media.zenfs.com/en_us/News/Reuters/2014-07-05T175309Z_304896811_TB3EA751GBX8D_RTRMADP_3_SOCCER-WORLD-M60-ARG-BEL.JPG" width="1600" height="500" alt="Second slide">
                                         <div class="carousel-caption d-none d-md-block">
-                                            <h5>Somewhere Beyond, United States</h5>
+                                            <h5>一注入魂 勝利就在明日</h5>
                                         </div>
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="d-block" src="assets/img/bg4.jpg" alt="Third slide">
+                                        <img class="d-block" src="http://media.zenfs.com/en_us/News/gettyimages.com/germany-v-argentina-2014-fifa-20140713-213037-895.jpg" width="1600" height="500" alt="Third slide">
                                         <div class="carousel-caption d-none d-md-block">
-                                            <h5>Yellowstone National Park, United States</h5>
+                                            <h5>成為笑到最後的那一位冠軍</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -220,40 +230,66 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade login" id="loginModal">
+            <div class="modal-dialog login animated">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h4 class="modal-title">登入</h4>
+                  </div>
+                  <div class="modal-body">  
+                      <div class="box">
+                           <div class="content">
+                              <div class="error"></div>
+                              <div class="form loginBox">
+                                  <form method="post" action="/login-account" accept-charset="UTF-8">
+                                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                  <input id="phone" class="form-control" type="text" placeholder="電話" name="phone">
+                                  <input id="password" class="form-control" type="password" placeholder="密碼" name="password">
+                                  <input class="btn btn-default btn-login" type="submit" value="登入">
+                                  </form>
+                              </div>
+                           </div>
+                      </div>
+                      <div class="box">
+                          <div class="content registerBox" style="display:none;">
+                           <div class="form">
+                              <form method="post" html="{:multipart=>true}" data-remote="true" action="/register" accept-charset="UTF-8">
+                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                              <input id="phone" class="form-control" type="text" placeholder="電話" name="phone" required>
+                              <input id="wechat" class="form-control" type="text" placeholder="微信" name="wechat" required>
+                              <input id="password" class="form-control" type="password" placeholder="密碼" name="password" required>
+                              <input id="password_confirmation" class="form-control" type="password" placeholder="確認密碼" name="password_confirmation" required>
+                              <input class="btn btn-default btn-register" type="submit" value="建立帳號" name="commit">
+                              </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <div class="forgot login-footer">
+                          <span>想要 
+                               <a href="javascript: showRegisterForm();">建立帳號嗎</a>
+                          ?</span>
+                      </div>
+                      <div class="forgot register-footer" style="display:none">
+                           <span>已經有帳號了?</span>
+                           <a href="javascript: showLoginForm();">登入</a>
+                      </div>
+                  </div>        
+                </div>
+            </div>
+        </div>
+
         <!--  End Modal -->
         <footer class="footer" data-background-color="black">
             <div class="container">
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="https://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://presentation.creative-tim.com">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md">
-                                MIT License
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
                 <div class="copyright">
                     &copy;
                     <script>
                         document.write(new Date().getFullYear())
-                    </script>, Designed by
-                    <a href="http://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                    </script>
+                    Coded by RS</a>.
                 </div>
             </div>
         </footer>
@@ -289,6 +325,15 @@
         if ($('.section-download').length != 0) {
             $("html, body").animate({
                 scrollTop: $('.section-download').offset().top
+            }, 1000);
+        }
+    }
+
+    function scrollToGame() {
+
+        if ($('.section-game').length != 0) {
+            $("html, body").animate({
+                scrollTop: $('.section-game').offset().top
             }, 1000);
         }
     }

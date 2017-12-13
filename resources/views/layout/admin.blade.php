@@ -57,7 +57,7 @@
                     <a href="#">更改密碼</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">登出</a>
+                    <a href="/admin/logout">登出</a>
                   </div>
                 </div>
                 <!-- /.row -->
@@ -91,7 +91,7 @@
         <li><a href="/admin/manage/ball"><i class="fa fa-bar-chart"></i> <span>球板分析</span></a></li>
         <li><a href="/admin/legend-table"><i class="fa fa-get-pocket"></i> <span>新增聯盟</span></a></li>
         @if(Auth::user()['user_type'] == 'root')
-        <li><a href="/admin/legend-table"><i class="fa fa-bomb"></i> <span>緊急關閉所有權限</span></a></li>
+        <li><a href="/admin/pauseEverybody"><i class="fa fa-bomb"></i> <span>緊急關閉所有權限</span></a></li>
         @endif
       </ul>
     </section>

@@ -16,14 +16,37 @@ class IndexController extends Controller
     public function getIndex()
     {
     	$user = Auth::user();
-    	if ($user) {
-    		if ($user['user_type'] != 'member' || Carbon::now()->lt($user['until_date'])) {
+        $permission = false;
+        $isLogin = false;
+    	if ($user && !empty($user['until_date'])) {
+            $isLogin = true;
+    		if ($user['user_type'] != 'member' || Carbon::now()->lte(Carbon::parse($user['until_date']))) {
     			$permission = true;
     		}
-    	} else {
-    		$permission = false;
     	}
-        return view('overtheworld.index', ['results' => GamePredict::get()->groupBy('game_type'), 'legends' => \App\Legend::get(), 'permission' => $permission]);
+        return view('overtheworld.index', ['results' => GamePredict::get()->groupBy('game_type'), 'legends' => \App\Legend::get(), 'permission' => $permission, 'user' => $user, 'isLogin' => $isLogin]);
     }
 
+    public function getLogout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
+
+    public function postRegister(Request $request)
+    {
+        $user = new User;
+        $user->mobile_phone = $request->phone;
+        $user->password = bcrypt($request->password);
+        $user->wechat = $request->wechat;
+        $user->user_type = 'member';
+        $user->save();
+        return redirect('/');
+    }
+
+    public function postLoginAccount(Request $request)
+    {
+        Auth::attempt(['mobile_phone' => $request->phone, 'password' => $request->password]);
+        return redirect('/');
+    }
 }

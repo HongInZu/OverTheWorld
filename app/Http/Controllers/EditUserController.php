@@ -27,9 +27,14 @@ class EditUserController extends Controller
     public function postLogin(Request $request)
     {
         if (Auth::attempt(['mobile_phone' => $request->account, 'password' => $request->password])) {
-            return redirect('/admin');
+            $user = Auth::user();
+            if ($user->user_type != 'member' && $user->status == 1) {
+                return redirect('/admin');
+            } else {
+                return redirect('/admin/login');
+            }
         } else {
-            return view('admin.login');
+            return redirect('/admin/login');
         }
     }
 

@@ -16,10 +16,13 @@ class AdminAuthLogin
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::check()) {
-            return redirect('/admin/login');
+        if (Auth::check()) {
+            if (Auth::user()->user_type != 'member' && Auth::user()->status != '0') {
+                return $next($request);
+            } else {
+                return Auth::user();
+            }
         }
-
-        return $next($request);
+        return redirect('/admin/login');
     }
 }

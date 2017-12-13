@@ -9,11 +9,6 @@ use Carbon\Carbon;
 
 class EditBallController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth.login');
-    }
-
     /**
      * 回應對 GET /edititem/todb 的請求
      */

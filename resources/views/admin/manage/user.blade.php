@@ -9,8 +9,8 @@
     <thead>
     <tr>
       <th>編號</th>
-      <th>帳號</th>
       <th>姓名</th>
+      <th>手機號碼</th>
       <th>wechat</th>
       <th>建立日期</th>
       <th>最新儲存時間</th>  
@@ -38,9 +38,9 @@
     <tfoot>
     <tr>
       <th>編號</th>
-      <th>帳號</th>
       <th>姓名</th>
-      <th>LineID</th>
+      <th>手機號碼</th>
+      <th>wechat</th>
       <th>建立日期</th>
       <th>最新儲存時間</th>  
       <th>功能</th>     

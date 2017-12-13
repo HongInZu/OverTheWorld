@@ -13,11 +13,6 @@ use Auth;
 
 class ManageController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth.login');
-    }
-
     /**
      * 回應對 GET /manageitem/food 的請求
      */
