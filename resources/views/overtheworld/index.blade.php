@@ -24,7 +24,9 @@
         <td>{{$value['handicap']}} {{($value['handicap_type'] == 1) ? '平' : ''}}</td>
         <td>{{$value['smaller']}}</td>
         <td>
-            @if ($value['game_predict_status'] == 0)
+            @if(!$isLogin)
+              請先登入帳號
+            @elseif ($value['game_predict_status'] == 0)
               正在分析中
             @elseif ($permission || ($value['game_over'] == 1))
               {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
@@ -43,8 +45,8 @@
             @endif
           </td>
         @else
-          <td>球賽尚未結束</td>
-          <td>球賽尚未結束</td>
+          <td></td>
+          <td></td>
         @endif
       </tr>
       @endforeach
