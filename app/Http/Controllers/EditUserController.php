@@ -16,12 +16,13 @@ class EditUserController extends Controller
     {
         if ($id != null) {
             $user = User::find($id);
-            return view('admin.edit.user', [
-                                            'user' => $user,
-                                            ]);
-        } else {
-            return view('admin.edit.user', ['user' => []]);
-        }    
+            if ($user['user_type'] != 'root') {
+                return view('admin.edit.user', [
+                                                'user' => $user,
+                                                ]);
+            }
+        }
+        return view('admin.edit.user', ['user' => []]);
     }
 
     public function postLogin(Request $request)
@@ -45,6 +46,9 @@ class EditUserController extends Controller
     {
         if ($request->id != -1) {
             $game_predict = User::find($request->id);
+            if ($game_predict['user_type'] == 'root') {
+                return redirect("admin/manage/user");
+            }
         } else {
             $game_predict = new User;
         }

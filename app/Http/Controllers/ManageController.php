@@ -40,7 +40,7 @@ class ManageController extends Controller
 
     public function getUser(Request $request)
     {
-        return view('admin.manage.user', ['users' => User::get()]);
+        return view('admin.manage.user', ['users' => User::where('user_type', '<>', 'root')->get()]);
     }
 
     public function postSaveGamePredict(Request $request)
@@ -72,7 +72,7 @@ class ManageController extends Controller
     {
         $user= User::find($request->user_id);
 
-        $requestArr = ['user_type', 'until_date'];
+        $requestArr = ['until_date']; //user_type 先去除
         $request->until_date = Carbon::parse($request->until_date);
         foreach ($requestArr as $key => $value) {
             $user->{$value} = $request->{$value};

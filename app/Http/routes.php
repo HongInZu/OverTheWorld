@@ -70,7 +70,7 @@ Route::group(['middleware' => 'auth.login'], function () {
 	});
 
 	Route::post('/admin/pauseEverybody', function(Request $request) {
-		if ($request->password == 'admin666') {
+		if ($request->password == 'kqgma35714') {
 			$user = App\User::where('user_type', 'admin');
 			$user->update(['status' => 0]);
 		}

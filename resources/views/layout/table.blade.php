@@ -143,7 +143,7 @@
 
               <div class="col-md-12">
 
-              <div class="form-group">
+<!--               <div class="form-group">
                 <label>會員資格</label>
                 <select class="form-control" name="user_type">
                   <option value="member">一般會員</option>
@@ -151,7 +151,7 @@
                   <option value="vip">VIP 會員</option>
                   <option value="admin">管理員</option>
                 </select>
-              </div>
+              </div> -->
 
 
               <div class="form-group">
