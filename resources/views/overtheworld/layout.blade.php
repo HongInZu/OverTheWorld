@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./img/horse_logo.png">
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>驰名天下国际赛事分析网</title>
@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
         <div class="container">
             <div class="navbar-translate">
-                <a class="navbar-brand" href="http://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip" title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank">
+                <a class="navbar-brand" href="http://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip" title="驰名天下" data-placement="bottom" target="_blank">
                     <p>驰名天下</p>
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,13 +95,13 @@
             </div>
             <div class="container">
                 <div class="content-center brand">
-                    <img class="n-logo" src="./assets/img/now-logo.png" alt="">
+                    <img class="n-logo" src="./img/horse_logo.png" alt="">
                     <h1 class="h1-seo">驰名天下</h1>
                     <h3>精准分析所有赛事 获利翻盘就趁现在</h3>
                 </div>
             </div>
         </div>
-        <div class="main">
+<!--         <div class="main">
             <div class="section section-images">
                 <div class="container">
                     <div class="row">
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="section section-tabs section-game">
                 <div class="container">
                     <div class="row">
@@ -164,7 +164,7 @@
             </div>
             <div class="section" id="carousel">
                 <div class="container">
-                    <div class="row justify-content-center">
+<!--                     <div class="row justify-content-center">
                         <div class="col-8">
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
@@ -200,7 +200,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         <!--  End Modal -->
