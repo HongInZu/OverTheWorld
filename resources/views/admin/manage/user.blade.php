@@ -31,9 +31,9 @@
         <td>
           @if($user['user_type'] == 'root')
           <a class="btn btn-app" href="/admin/edit-user/user/{{$user->id}}"><i class="fa fa-edit"></i> 編輯</a>
-          <input type="hidden" value="{{$user->id}}" id="user_id">
           @endif
           @if($user['user_type'] == 'member')
+          <input type="hidden" value="{{$user->id}}" id="user_id">
           <a class="btn btn-app user_permission_button" data-toggle="modal" data-target="#modal-user"><i class="fa fa-user"></i> 會員資格</a>
           @endif
         </td>
