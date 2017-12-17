@@ -15,15 +15,15 @@ class IndexController extends Controller
      */
     public function getIndex()
     {
-    	$user = Auth::user();
+        $user = Auth::user();
         $permission = false;
         $isLogin = false;
-    	if ($user && !empty($user['until_date'])) {
+        if ($user && !empty($user['until_date'])) {
             $isLogin = true;
-    		if ($user['user_type'] != 'member' || Carbon::now()->lte(Carbon::parse($user['until_date']))) {
-    			$permission = true;
-    		}
-    	}
+            if ($user['user_type'] != 'member' || Carbon::now()->lte(Carbon::parse($user['until_date']))) {
+                $permission = true;
+            }
+        }
         return view('overtheworld.index', ['results' => GamePredict::get()->groupBy('game_type'), 'legends' => \App\Legend::get(), 'permission' => $permission, 'user' => $user, 'isLogin' => $isLogin]);
     }
 
@@ -40,6 +40,7 @@ class IndexController extends Controller
         $user->password = bcrypt($request->password);
         $user->wechat = $request->wechat;
         $user->user_type = 'member';
+        $user->until_date = Carbon::today();
         $user->save();
         return redirect('/');
     }
