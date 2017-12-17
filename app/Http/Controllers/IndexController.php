@@ -40,6 +40,7 @@ class IndexController extends Controller
         $user->password = bcrypt($request->password);
         $user->wechat = $request->wechat;
         $user->user_type = 'member';
+        $user->until_date = Carbon::today();
         $user->save();
         return redirect('/');
     }
