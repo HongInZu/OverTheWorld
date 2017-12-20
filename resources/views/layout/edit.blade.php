@@ -71,7 +71,7 @@
                 <!-- /.input group -->
               </div>
               <div class="form-group">
-                <label>盤口</label>
+                <label>盤口 (勾選為平盤)</label>
                 <div class="input-group">
                   <span class="input-group-addon">
                     @if (!isset($game['handicap_type']))

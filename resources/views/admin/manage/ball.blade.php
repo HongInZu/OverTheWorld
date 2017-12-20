@@ -1,6 +1,6 @@
 @extends('layout.manage')
 @section('edit-type', 'ball')
-@section('content-header', '賽事分析')
+@section('content-header', '賽事分析-讓分')
 @section('content-table')
     <div class="form-group">
       <label>聯盟選單</label>

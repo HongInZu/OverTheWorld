@@ -28,8 +28,20 @@ class ManageController extends Controller
 
     public function getBall()
     {
-        $legend = Legend::first();
-        return view('admin.manage.ball', ['results' => GamePredict::where('game_type', $legend['code'])->get(), 'legends' => Legend::get(), 'ball' => $legend ]);
+        $legend = Legend::where('bet_type', 1)->first();
+        return view('admin.manage.ball', [
+            'results' => GamePredict::where('game_type', $legend['code'])->get(), 
+            'legends' => Legend::where('bet_type', 1)->get(),
+            'ball' => $legend ]);
+    }
+
+    public function getBigAndSmallBall()
+    {
+        $legend = Legend::where('bet_type', 2)->first();
+        return view('admin.manage.bigsmallball', [
+            'results' => GamePredict::where('game_type', $legend['code'])->get(), 
+            'legends' => Legend::where('bet_type', 2)->get(),
+            'ball' => $legend ]);
     }
     public function postBall(Request $request)
     {
