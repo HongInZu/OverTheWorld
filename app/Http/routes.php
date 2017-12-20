@@ -31,20 +31,34 @@ Route::group(['middleware' => 'auth.login'], function () {
 
 	Route::controller('admin/manage', 'ManageController');
 
-	Route::get('admin/edit-ball/{code}/{id}', function($code, $id) {
-		$legend = App\Legend::where('code', $code)->first();
+	Route::get('admin/edit-ball/{legend_id}/{id}', function($legend_id, $id) {
+		$legend = App\Legend::find($legend_id);
 	    $game_predict = App\GamePredict::find($id);
 	    $game_predict->game_date = Carbon\Carbon::parse($game_predict->game_date)->format('m/d/Y');
 	    return view('admin.edit.ball', ['game' => $game_predict, 'legend' => $legend]);
 	});
 
-	Route::get('admin/add-ball/{code}', function($code) {
-		$legend = App\Legend::where('code', $code)->first();
+	Route::get('admin/edit-bigandsmall/{legend_id}/{id}', function($legend_id, $id) {
+		$legend = App\Legend::find($legend_id);
+	    $game_predict = App\GameBigAndSmall::find($id);
+	    $game_predict->game_date = Carbon\Carbon::parse($game_predict->game_date)->format('m/d/Y');
+	    return view('admin.edit.bigandsmall', ['game' => $game_predict, 'legend' => $legend]);
+	});
+
+	Route::get('admin/add-ball/{id}', function($id) {
+		$legend = App\Legend::find($id);
 		return view('admin.edit.ball', ['legend' => $legend]);
 	});
 
+	Route::get('admin/add-bigandsmall/{id}', function($id) {
+		$legend = App\Legend::find($id);
+		return view('admin.edit.bigandsmall', ['legend' => $legend]);
+	});
+
 	Route::controller('admin/manage-item', 'ManageItemController');
-	Route::controller('admin/edit-ball', 'EditBallController');
+	Route::post('admin/edit-ball/todb', 'EditBallController@postTodb');
+	Route::post('admin/edit-bigandsmall/todb', 'EditBallController@postBigAndSmallTodb');
+
 	Route::controller('admin/edit-user', 'EditUserController');
 
 	Route::get('admin/legend-table', 'AddLegendController@getLegendTable');
@@ -54,13 +68,26 @@ Route::group(['middleware' => 'auth.login'], function () {
 	});
 
 	Route::post('/admin/add/legend-todb', function(Request $request){
-		$input = $request->only('name', 'code');
+		$input = $request->only('name', 'bet_type');
 		$legend = new App\Legend();
 		foreach ($input as $key => $value) {
 			if(!empty($value)) {
 				$legend->{$key} = $value;
 			}
 		}
+		$legend->save();
+		return redirect('/admin/legend-table');
+	});
+
+	Route::get('admin/edit/legend/{id}', function($id) {
+		$legend = App\Legend::find($id);
+	    return view('admin.edit.legend', ['legend' => $legend]);
+	});
+
+	Route::post('/admin/edit/legend-todb/', function(Request $request){
+		$input = $request->only('id', 'name');
+		$legend = App\Legend::find($input['id']);
+		$legend->name = $input['name'];
 		$legend->save();
 		return redirect('/admin/legend-table');
 	});

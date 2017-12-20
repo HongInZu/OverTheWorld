@@ -49,17 +49,27 @@
           <div class="box-body">
               <!-- text input -->
               <div class="form-group">
+                <label>球賽類型</label>
+                <br>
+                <label>讓分
+                  <input type="radio" name="bet_type" value="1" class="minimal" checked>
+                </label>大小分
+                <label>
+                  <input type="radio" name="bet_type" value="2" class="minimal">
+                </label>
+              </div>
+              <div class="form-group">
                 <label>聯盟名稱</label>
                 <input type="text" class="form-control" name="name" placeholder="ex.西甲" required>
               </div>
-              <div class="form-group">
+<!--               <div class="form-group">
                 <label>聯盟代號</label>
                 <input type="text" class="form-control" name="code" placeholder="ex.lfp" required>
+              </div> -->
+              <div class="box-footer">
+                <button type="button" id="cancel" class="btn btn-default">取消</button>
+                <button type="submit" class="btn btn-info pull-right">提交</button>
               </div>
-            <div class="box-footer">
-              <button type="button" id="cancel" class="btn btn-default">取消</button>
-              <button type="submit" class="btn btn-info pull-right">提交</button>
-            </div>
 
             </form>
           </div>

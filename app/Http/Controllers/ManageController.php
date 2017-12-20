@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\GamePredict;
+use App\GameBigAndSmall;
 use App\User;
 use App\Legend;
 use Carbon\Carbon;
@@ -29,12 +30,35 @@ class ManageController extends Controller
     public function getBall()
     {
         $legend = Legend::first();
-        return view('admin.manage.ball', ['results' => GamePredict::where('game_type', $legend['code'])->get(), 'legends' => Legend::get(), 'ball' => $legend ]);
+        return view('admin.manage.ball', [
+            'results' => GamePredict::where('legend_id', $legend['id'])->get(), 
+            'legends' => Legend::get(),
+            'ball' => $legend ]);
     }
+
+    public function getBigAndSmallBall()
+    {
+        $legend = Legend::first();
+        return view('admin.manage.bigsmallball', [
+            'results' => GameBigAndSmall::where('legend_id', $legend['id'])->get(), 
+            'legends' => Legend::get(),
+            'ball' => $legend ]);
+    }
+
+    public function postBigAndSmallBall(Request $request)
+    {
+        $legend = Legend::find($request->legend);
+        return view('admin.manage.ball', [
+            'results' => GameBigAndSmall::where('legend_id', $legend['id'])->get(), 
+            'legends' => Legend::get(), 
+            'ball' => $legend ]);
+    }
+
+
     public function postBall(Request $request)
     {
-        $legend = Legend::where('code', $request->legend)->first();
-        return view('admin.manage.ball', ['results' => GamePredict::where('game_type', $legend['code'])->get(), 'legends' => Legend::get(), 'ball' => $legend ]);
+        $legend = Legend::find($request->legend);
+        return view('admin.manage.ball', ['results' => GamePredict::where('legend_id', $legend['id'])->get(), 'legends' => Legend::get(), 'ball' => $legend ]);
     }
 
 
@@ -95,6 +119,35 @@ class ManageController extends Controller
         $user = User::find($request->id);
         $user->until_date = Carbon::parse($user->until_date)->format('m/d/Y');
         return $user;
+    }
+
+    public function postSaveGameBigAndSmall(Request $request)
+    {
+        $game_predict = GameBigAndSmall::find($request->game_bigandsmall_id);
+
+        $requestArr = ['game_predict_status', 'game_over', 'game_bigger_score', 'game_smaller_score', 'game_predict', 'game_result'];
+
+        foreach ($requestArr as $key => $value) {
+            if (isset($request->{$value})) {
+                if (is_array($request->{$value})) {
+                    $game_predict->{$value} = json_encode($request->{$value});
+                } else {
+                    $game_predict->{$value} = $request->{$value};
+                }
+            } else {
+                $game_predict->{$value} = '';
+            }
+        }
+
+        if ($game_predict->save()) {
+            return [true];
+        } else {
+            return [false];
+        }
+    }
+    public function postBigAndSmallStatus(Request $request)
+    {
+        return GameBigAndSmall::find($request->id);
     }
 
 }

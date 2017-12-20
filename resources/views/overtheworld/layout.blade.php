@@ -123,13 +123,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-lg-12 col-xl-12 ml-auto mr-auto">
-                            <h4 class="title title-up">球版分析</h4>
+                            <h4 class="title title-up">球版分析 - 受讓分</h4>
                             <!-- Tabs with Background on Card -->
                             <div class="card">
                                 <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
                                     @foreach($legends as $key => $legend)
                                     <li class="nav-item">
-                                        <a class="nav-link {{($key==0)?'active':''}} " data-toggle="tab" href="#{{$legend['code']}}" role="tab">{{$legend['name']}}</a>
+                                        <a class="nav-link {{($key==0)?'active':''}} " data-toggle="tab" href="#{{$legend['id']}}" role="tab">{{$legend['name']}}</a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -137,6 +137,27 @@
                                     <!-- Tab panes -->
                                     <div class="tab-content">
                                         @yield('content-table')
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Tabs on plain Card -->
+                        </div>
+
+                        <div class="col-md-12 col-lg-12 col-xl-12 ml-auto mr-auto">
+                            <h4 class="title title-up">球版分析 - 大小分</h4>
+                            <!-- Tabs with Background on Card -->
+                            <div class="card">
+                                <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
+                                    @foreach($legends as $key => $legend)
+                                    <li class="nav-item">
+                                        <a class="nav-link {{($key==0)?'active':''}} " data-toggle="tab" href="#{{$legend['id']}}bigsmall" role="tab">{{$legend['name']}}</a>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                                <div class="card-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        @yield('content-table2')
                                     </div>
                                 </div>
                             </div>

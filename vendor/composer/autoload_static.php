@@ -356,6 +356,7 @@ class ComposerStaticInite767649030f797c1a2da4b6fa22a6442
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+        'Legend' => __DIR__ . '/../..' . '/database/migrations/2017_12_20_040212_legend.php',
         'LegendTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_11_165049_legend_table.php',
         'LegendTable1' => __DIR__ . '/../..' . '/database/migrations/2017_12_11_170244_legend_table1.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
