@@ -1,4 +1,4 @@
-@extends('overtheworld.layout')
+@extends('overtheworld.layout-cn')
 
 @section('content-table')
   @foreach ($legends as $key => $legend)
@@ -6,14 +6,14 @@
     <table class="table table-bordered table-striped">
     <thead>
     <tr>
-      <th>編號</th>
-      <th>讓分</th>
-      <th>盤口</th>
-      <th>受讓</th>
-      <th>精準預測</th>
-      <th>球賽日期</th>
+      <th>编号</th>
+      <th>让分</th>
+      <th>盘口</th>
+      <th>受让</th>
+      <th>精准预测</th>
+      <th>球赛日期</th>
       <th>比分</th>
-      <th>結果</th>
+      <th>结果</th>
     </tr>
     </thead>
     <tbody>
@@ -26,13 +26,13 @@
         <td>{{$value['smaller']}}</td>
         <td>
             @if(!$isLogin)
-              請先登入帳號
+              请先登入帐号
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
             @elseif ($permission || ($value['game_over'] == 1))
               {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
             @else
-              請先購買權限
+              请先购买权限
             @endif
         </td>
         <td>{{$value->game_date}}</td>
@@ -40,9 +40,9 @@
           <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
           <td>
             @if($value['game_result'] == $value['game_predict'])
-              贏
+              赢
             @else
-              輸
+              输
             @endif
           </td>
         @else
@@ -55,14 +55,14 @@
     </tbody>
     <tfoot>
     <tr>
-      <th>編號</th>
-      <th>讓分</th>
-      <th>盤口</th>
-      <th>受讓</th>
-      <th>精準預測</th>
-      <th>球賽日期</th>
+      <th>编号</th>
+      <th>让分</th>
+      <th>盘口</th>
+      <th>受让</th>
+      <th>精准预测</th>
+      <th>球赛日期</th>
       <th>比分</th>
-      <th>結果</th>
+      <th>结果</th>
     </tr>
     </tfoot>
     </table>
@@ -77,14 +77,14 @@
     <table class="table table-bordered table-striped">
     <thead>
     <tr>
-      <th>編號</th>
-      <th>主隊</th>
-      <th>盤口</th>
-      <th>客隊</th>
-      <th>精準預測</th>
-      <th>球賽日期</th>
+      <th>编号</th>
+      <th>主队</th>
+      <th>盘口</th>
+      <th>客队</th>
+      <th>精准预测</th>
+      <th>球赛日期</th>
       <th>比分</th>
-      <th>結果</th>
+      <th>结果</th>
     </tr>
     </thead>
     <tbody>
@@ -97,13 +97,13 @@
         <td>{{$value['smaller']}}</td>
         <td>
             @if(!$isLogin)
-              請先登入帳號
+              请先登入帐号
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
             @elseif ($permission || ($value['game_over'] == 1))
               {{($value->game_predict == 0) ? '大' : '小'}}
             @else
-              請先購買權限
+              请先购买权限
             @endif
         </td>
         <td>{{$value->game_date}}</td>
@@ -111,9 +111,9 @@
           <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
           <td>
             @if($value['game_result'] == $value['game_predict'])
-              贏
+              赢
             @else
-              輸
+              输
             @endif
           </td>
         @else
@@ -126,14 +126,14 @@
     </tbody>
     <tfoot>
     <tr>
-      <th>編號</th>
-      <th>讓分</th>
-      <th>盤口</th>
-      <th>受讓</th>
-      <th>精準預測</th>
-      <th>球賽日期</th>
+      <th>编号</th>
+      <th>让分</th>
+      <th>盘口</th>
+      <th>受让</th>
+      <th>精准预测</th>
+      <th>球赛日期</th>
       <th>比分</th>
-      <th>結果</th>
+      <th>结果</th>
     </tr>
     </tfoot>
     </table>

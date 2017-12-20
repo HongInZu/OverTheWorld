@@ -38,10 +38,10 @@
 
 @section('content')
   <div class="row">
-    <form role="form" action="/admin/edit-ball/todb" method="post">
+    <form role="form" action="/admin/edit-bigandsmall/todb" method="post">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <input type="hidden" name="id" value="{{ $game['id'] or '-1' }}">
-      <input type="hidden" name="game_type" value="{{ $legend['code'] }}">
+      <input type="hidden" name="legend_id" value="{{ $legend['id'] }}">
       <div class="col-md-12">
         <!-- general form elements disabled -->
         <div class="box box-info">
@@ -72,9 +72,7 @@
               </div>
               <div class="form-group">
                 <label>盤口</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" name="handicap" value="{{$game['handicap'] or ''}}" placeholder="勾選為平盤. Ex. 1-12 or 2+11" required>
-                </div>
+                  <input type="text" class="form-control" name="handicap" placeholder="盤口分數" value="{{$game['handicap'] or ''}}" required>
               </div>
             <div class="box-footer">
               <button type="button" id="cancel" class="btn btn-default">取消</button>

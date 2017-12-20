@@ -1,14 +1,14 @@
 @extends('layout.manage')
-@section('edit-type', 'bigsmallball')
+@section('edit-type', 'bigandsmall')
 @section('content-header', '賽事分析-大小分')
 @section('content-table')
     <div class="form-group">
       <label>聯盟選單</label>
       <form action="/admin/manage/ball" id='legend-select' method="post">
         {!! Form::token() !!}
-        <select class="form-control" name="legend" onchange="$('#legend-select').submit()">
+        <select class="form-control" name="legend_id" onchange="$('#legend-select').submit()">
           @foreach ($legends as $legend)
-          <option value="{{$legend['code']}}" {{($legend['code'] == $ball['code']) ? 'selected' : ''}}>{{$legend['name']}}</option>
+          <option value="{{$legend['id']}}" {{($legend['id'] == $ball['id']) ? 'selected' : ''}}>{{$legend['name']}}</option>
           @endforeach
         </select>
       </form>
@@ -36,14 +36,17 @@
         <td>{{$result['bigger']}}</td>
         <td>{{$result['handicap']}} {{($result['handicap_type'] == 1) ? '平' : ''}}</td>
         <td>{{$result['smaller']}}</td>
-        <td>{{($result->game_predict == 0) ? '大' : '小'}}</td>
+        <td>@if (!empty($result->game_predict))
+                {{($result->game_predict == 0) ? '大' : '小'}}
+            @endif
+        </td>
         <td>{{$result->game_date}}</td>
         <td>{{$result->created_at}}</td>
         <td>{{$result->updated_at}}</td>
         <td>
-          <a class="btn btn-app" href="/admin/edit-ball/{{$result->game_type}}/{{$result->id}}"><i class="fa fa-edit"></i> 編輯</a>
+          <a class="btn btn-app" href="/admin/edit-bigandsmall/{{$result->legend_id}}/{{$result->id}}"><i class="fa fa-edit"></i> 編輯</a>
           <input type="hidden" value="{{$result->id}}" id="game_id">
-          <a class="btn btn-app game_predict_button" data-toggle="modal" data-target="#modal-default"><i class="fa fa-bar-chart"></i> 預測</a>
+          <a class="btn btn-app game_bigandsmall_button" data-toggle="modal" data-target="#modal-bigandsmall"><i class="fa fa-bar-chart"></i> 預測</a>
         </td>
         <form>
       </tr>

@@ -7,6 +7,8 @@ use App\User;
 use Carbon\Carbon;
 use App\GamePredict;
 use Auth;
+use App\GameBigAndSmall;
+
 
 class IndexController extends Controller
 {
@@ -24,7 +26,11 @@ class IndexController extends Controller
                 $permission = true;
             }
         }
-        return view('overtheworld.index', ['results' => GamePredict::get()->groupBy('game_type'), 'legends' => \App\Legend::get(), 'permission' => $permission, 'user' => $user, 'isLogin' => $isLogin]);
+        if (env('LANGUAGE') == 'CN') {
+            return view('overtheworld.index-cn', ['gamePredict' => GamePredict::get()->groupBy('legend_id'), 'gameBigAndSmall' => GameBigAndSmall::get()->groupBy('legend_id'), 'legends' => \App\Legend::get(), 'permission' => $permission, 'user' => $user, 'isLogin' => $isLogin]);
+        } else {
+            return view('overtheworld.index', ['gamePredict' => GamePredict::get()->groupBy('legend_id'), 'gameBigAndSmall' => GameBigAndSmall::get()->groupBy('legend_id'), 'legends' => \App\Legend::get(), 'permission' => $permission, 'user' => $user, 'isLogin' => $isLogin]);
+        }
     }
 
     public function getLogout()

@@ -12,11 +12,9 @@ class Legend extends Migration
      */
     public function up()
     {
-        Schema::table('legends', function ($table) {
-            $table->unique('code')->change();
-            $table->integer('bet_type');
-            $table->primary('id')->change();
-        });
+        // Schema::table('legends', function ($table) {
+        //     $table->dropColumn('code');
+        // });
     }
 
     /**

@@ -41,7 +41,7 @@
     <form role="form" action="/admin/edit-ball/todb" method="post">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <input type="hidden" name="id" value="{{ $game['id'] or '-1' }}">
-      <input type="hidden" name="game_type" value="{{ $legend['code'] }}">
+      <input type="hidden" name="legend_id" value="{{ $legend['id'] }}">
       <div class="col-md-12">
         <!-- general form elements disabled -->
         <div class="box box-info">
