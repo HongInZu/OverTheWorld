@@ -46,11 +46,7 @@ class IndexController extends Controller
         $user->password = bcrypt($request->password);
         $user->wechat = $request->wechat;
         $user->user_type = 'member';
-<<<<<<< HEAD
-        $user->until_date = Carbon::today();
-=======
         $user->until_date = Carbon::parse(Carbon::today());
->>>>>>> master
         $user->save();
         return redirect('/');
     }
