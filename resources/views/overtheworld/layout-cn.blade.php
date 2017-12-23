@@ -217,7 +217,7 @@
                     <div class="row" id="modals">
                         <div class="col-md-6">
                             <h4>汇款资讯</h4>
-                                    {!! $informations['transfer'] !!}
+                                    {!! $informations['transfer'] or '' !!}
                                 </p>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
                     <div class="row justify-content-md-center">
                         <div class="col-md-12 col-lg-12">
                             <h3 class="title text-center">条款与保护</h3>
-                            <h5 class="description">{!! $informations['terms'] !!}</h5>
+                            <h5 class="description">{!! $informations['terms'] or '' !!}</h5>
                         </div>
                     </div>
                     <br>
