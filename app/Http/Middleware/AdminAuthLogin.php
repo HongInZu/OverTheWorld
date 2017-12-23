@@ -20,7 +20,7 @@ class AdminAuthLogin
             if (Auth::user()->user_type != 'member' && Auth::user()->status != '0') {
                 return $next($request);
             } else {
-                return Auth::user();
+                return redirect('/admin/login');
             }
         }
         return redirect('/admin/login');

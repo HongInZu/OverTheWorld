@@ -79,6 +79,7 @@ return array(
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+    'Information' => $baseDir . '/database/migrations/2017_12_23_124339_Information.php',
     'Legend' => $baseDir . '/database/migrations/2017_12_20_040212_legend.php',
     'LegendTable' => $baseDir . '/database/migrations/2017_12_11_165049_legend_table.php',
     'LegendTable1' => $baseDir . '/database/migrations/2017_12_11_170244_legend_table1.php',
@@ -526,4 +527,5 @@ return array(
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'Vip' => $baseDir . '/database/migrations/2017_12_23_131358_vip.php',
 );

@@ -320,9 +320,9 @@
     margin-bottom: 30px;
 }
 
-#javascriptComponents {
+/*#javascriptComponents {
     padding-bottom: 0;
-}
+}*/
 
 
 /*      layer animation          */
@@ -394,10 +394,10 @@
     padding-bottom: 0;
 }
 
-.section-download {
+/*.section-download {
     padding-top: 130px;
 }
-
+*/
 .section-download .description {
     margin-bottom: 60px;
 }

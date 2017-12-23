@@ -31,9 +31,6 @@
     <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
         <div class="container">
             <div class="navbar-translate">
-                <a class="navbar-brand" href="http://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip" title="馳名天下" data-placement="bottom" target="_blank">
-                    <p>馳名天下</p>
-                </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-bar bar1"></span>
                     <span class="navbar-toggler-bar bar2"></span>
@@ -42,6 +39,12 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
                 <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)" onclick="scrollToTerms()" target="_blank">
+                            <i class="now-ui-icons design_bullet-list-67"></i>
+                            <p>條款與保護</p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0)" onclick="scrollToDownload()">
                             <i class="now-ui-icons business_bank"></i>
@@ -58,7 +61,7 @@
                         @if(!$isLogin)
                           <a class="nav-link btn btn-neutral" href="javascript:void(0)" onclick="openLoginModal();" target="_blank">
                               <i class="now-ui-icons arrows-1_share-66"></i>
-                              <p>加入我們</p>
+                              <p>登入</p>
                           </a>
                         @else
                           <a class="nav-link btn btn-neutral" href="/logout">
@@ -66,7 +69,7 @@
                           </a>
                         @endif
                     </li>
-                    <li class="nav-item">
+<!--                     <li class="nav-item">
                         <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
                             <i class="fa fa-twitter"></i>
                             <p class="d-lg-none d-xl-none">Twitter</p>
@@ -83,7 +86,7 @@
                             <i class="fa fa-instagram"></i>
                             <p class="d-lg-none d-xl-none">Instagram</p>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -163,6 +166,48 @@
                             </div>
                             <!-- End Tabs on plain Card -->
                         </div>
+
+                        <div class="col-md-12 col-lg-12 col-xl-12 ml-auto mr-auto">
+                            <h4 class="title title-up">球版分析 - 受讓分 - Vip 賽事</h4>
+                            <!-- Tabs with Background on Card -->
+                            <div class="card">
+                                <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
+                                    @foreach($legends as $key => $legend)
+                                    <li class="nav-item">
+                                        <a class="nav-link {{($key==0)?'active':''}} " data-toggle="tab" href="#{{$legend['id']}}-vip" role="tab">{{$legend['name']}}</a>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                                <div class="card-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        @yield('content-table-vip')
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Tabs on plain Card -->
+                        </div>
+
+                        <div class="col-md-12 col-lg-12 col-xl-12 ml-auto mr-auto">
+                            <h4 class="title title-up">球版分析 - 大小分 - Vip 賽事</h4>
+                            <!-- Tabs with Background on Card -->
+                            <div class="card">
+                                <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
+                                    @foreach($legends as $key => $legend)
+                                    <li class="nav-item">
+                                        <a class="nav-link {{($key==0)?'active':''}} " data-toggle="tab" href="#{{$legend['id']}}bigsmall-vip" role="tab">{{$legend['name']}}</a>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                                <div class="card-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        @yield('content-table2-vip')
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Tabs on plain Card -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -172,20 +217,27 @@
                     <div class="row" id="modals">
                         <div class="col-md-6">
                             <h4>匯款資訊</h4>
-                                <p style="font-size: 20px;">
-                                    訂單編號:361 <br>
-                                    購買方案:NPB 一天 <br>
-                                    繳款金額:500<br>
-                                    ATM虛擬帳號:銀行代號: 004 虛擬行號: 31904183623456<br>
-                                    截止日期:2016/09/09<br>
+                                    {!! $informations['transfer'] !!}
                                 </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="section" id="carousel">
+
+            <div class="section section-terms" id="#download-section" data-background-color="black">
                 <div class="container">
-<!--                     <div class="row justify-content-center">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-12 col-lg-12">
+                            <h3 class="title text-center">條款與保護</h3>
+                            <h5 class="description">{!! $informations['terms'] !!}</h5>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>                 
+<!--             <div class="section" id="carousel">
+                <div class="container">
+                    <div class="row justify-content-center">
                         <div class="col-8">
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
@@ -221,9 +273,9 @@
                                 </a>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
-            </div>
+            </div> -->
         <!--  End Modal -->
         <!-- Mini Modal -->
         <!-- Sart Modal -->
@@ -356,6 +408,15 @@
         if ($('.section-game').length != 0) {
             $("html, body").animate({
                 scrollTop: $('.section-game').offset().top
+            }, 1000);
+        }
+    }
+
+    function scrollToTerms() {
+
+        if ($('.section-terms').length != 0) {
+            $("html, body").animate({
+                scrollTop: $('.section-terms').offset().top
             }, 1000);
         }
     }

@@ -8,7 +8,8 @@ use Carbon\Carbon;
 use App\GamePredict;
 use Auth;
 use App\GameBigAndSmall;
-
+use App\GameBigAndSmallVip;
+use App\GameVip;
 
 class IndexController extends Controller
 {
@@ -18,6 +19,11 @@ class IndexController extends Controller
     public function getIndex()
     {
         $user = Auth::user();
+        $informations = \App\Information::get();
+        $output = [];
+        foreach ($informations as $key => $value) {
+            $output[$value['name']] = $value['content'];
+        }
         $permission = false;
         $isLogin = false;
         if ($user && !empty($user['until_date'])) {
@@ -27,9 +33,33 @@ class IndexController extends Controller
             }
         }
         if (env('LANGUAGE') == 'CN') {
-            return view('overtheworld.index-cn', ['gamePredict' => GamePredict::get()->groupBy('legend_id'), 'gameBigAndSmall' => GameBigAndSmall::get()->groupBy('legend_id'), 'legends' => \App\Legend::get(), 'permission' => $permission, 'user' => $user, 'isLogin' => $isLogin]);
+            return view('overtheworld.index-cn', 
+                [
+                'gamePredict' => GamePredict::get()->groupBy('legend_id'), 
+                'gameBigAndSmall' => GameBigAndSmall::get()->groupBy('legend_id'), 
+                'gameBigAndSmallVip' => GameBigAndSmallVip::get()->groupBy('legend_id'), 
+                'gameVip' => GameVip::get()->groupBy('legend_id'), 
+                'legends' => \App\Legend::get(), 
+                'permission' => $permission, 
+                'user' => $user, 
+                'isLogin' => $isLogin, 
+                'informations' => $output
+                ]
+            );
         } else {
-            return view('overtheworld.index', ['gamePredict' => GamePredict::get()->groupBy('legend_id'), 'gameBigAndSmall' => GameBigAndSmall::get()->groupBy('legend_id'), 'legends' => \App\Legend::get(), 'permission' => $permission, 'user' => $user, 'isLogin' => $isLogin]);
+            return view('overtheworld.index', 
+                [
+                'gamePredict' => GamePredict::get()->groupBy('legend_id'), 
+                'gameBigAndSmall' => GameBigAndSmall::get()->groupBy('legend_id'), 
+                'gameBigAndSmallVip' => GameBigAndSmallVip::get()->groupBy('legend_id'), 
+                'gameVip' => GameVip::get()->groupBy('legend_id'), 
+                'legends' => \App\Legend::get(), 
+                'permission' => $permission, 
+                'user' => $user, 
+                'isLogin' => $isLogin, 
+                'informations' => $output
+                ]
+            );
         }
     }
 

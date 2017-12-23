@@ -54,3 +54,54 @@
     </tfoot>
     </table>
 @endsection
+
+@section('modal')
+      <div class="modal fade" id="modal-user">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">編輯會員資格</h4>
+            </div>
+              
+              <form id='user_permission_form'>
+              <input type="hidden" name="user_id">
+
+              <div class="col-md-12">
+
+<!--               <div class="form-group">
+              <label>會員資格</label>
+              <select class="form-control" name="user_type">
+                <option value="member">一般會員</option>
+                <option value="user">付費會員</option>
+                <option value="vip">VIP 會員</option>
+                <option value="admin">管理員</option>
+              </select>
+            </div> -->
+
+
+            <div class="form-group">
+              <label>有效日期</label>
+              <div class="input-group date">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" name="until_date" value="" id="datepicker" required>
+              </div>
+              <!-- /.input group -->
+            </div>
+
+            </div>
+            </form>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">關閉</button>
+            <button type="button" id="save-user-permission" class="btn btn-primary">儲存變更</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+@endsection

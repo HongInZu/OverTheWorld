@@ -1,10 +1,10 @@
 @extends('layout.manage')
-@section('edit-type', 'ball')
-@section('content-header', '賽事分析-讓分')
+@section('edit-type', 'bigandsmall-vip')
+@section('content-header', '賽事分析-大小分-Vip')
 @section('content-table')
     <div class="form-group">
       <label>聯盟選單</label>
-      <form action="/admin/manage/ball" id='legend-select' method="post">
+      <form action="/admin/manage/big-and-small-ball-vip" id='legend-select' method="post">
         {!! Form::token() !!}
         <select class="form-control" name="legend_id" onchange="$('#legend-select').submit()">
           @foreach ($legends as $legend)
@@ -44,9 +44,9 @@
         <td>{{$result->created_at}}</td>
         <td>{{$result->updated_at}}</td>
         <td>
-          <a class="btn btn-app" href="/admin/edit-ball/{{$result->legend_id}}/{{$result->id}}"><i class="fa fa-edit"></i> 編輯</a>
+          <a class="btn btn-app" href="/admin/edit-bigandsmall-vip/{{$result->legend_id}}/{{$result->id}}"><i class="fa fa-edit"></i> 編輯</a>
           <input type="hidden" value="{{$result->id}}" id="game_id">
-          <a class="btn btn-app game_predict_button" data-toggle="modal" data-target="#modal-default"><i class="fa fa-bar-chart"></i> 預測</a>
+          <a class="btn btn-app game_vip_button" data-toggle="modal" data-target="#modal-bigandsmall-vip"><i class="fa fa-bar-chart"></i> 預測</a>
         </td>
         <form>
       </tr>
@@ -67,8 +67,9 @@
     </tfoot>
     </table>
 @endsection
+
 @section('modal')
-      <div class="modal fade" id="modal-default">
+      <div class="modal fade" id="modal-bigandsmall-vip">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -77,8 +78,8 @@
               <h4 class="modal-title">預測分析</h4>
             </div>
               
-              <form id='game_predict_form'>
-              <input type="hidden" name="game_predict_id">
+              <form id='game_bigandsmall_vip_form'>
+              <input type="hidden" name="game_bigandsmall_vip_id">
 
               <div class="col-md-12">
 
@@ -101,7 +102,7 @@
               </div>
 
               <div class="form-group col-md-6">
-                <label>讓方比數</label>
+                <label>主隊比數</label>
                 <div class="input-group">
                   <span class="input-group-addon">
                     <i class="fa fa-balance-scale"></i>
@@ -111,7 +112,7 @@
               </div>
 
               <div class="form-group col-md-6">
-                <label>受讓方比數</label>
+                <label>客隊比數</label>
                 <div class="input-group">
                   <span class="input-group-addon">
                     <i class="fa fa-balance-scale"></i>
@@ -126,11 +127,11 @@
               <div class="form-group">
                 <label>
                   <input type="radio" name="game_predict" class="minimal game_predict" value="0">
-                  讓方
+                  大分
                 </label>
                 <label>
                   <input type="radio" name="game_predict" class="minimal game_predict" value="1">
-                  受讓方
+                  小分
                 </label>
               </div>
             </div>
@@ -140,20 +141,33 @@
               <div class="form-group">
                 <label>
                   <input type="radio" name="game_result" class="minimal game_result" value="0">
-                  讓方
+                  大分
                 </label>
                 <label>
                   <input type="radio" name="game_result" class="minimal game_result" value="1">
-                  受讓方
+                  小分
                 </label>
               </div>
             </div>
-              </div>
-              </form>
+
+            <div class="form-group col-md-6">
+              <label>Vip</label>
+              <div class="form-group">
+              <select class="form-control select2" multiple="multiple" name="vip[]"
+                      style="width: 100%;">
+                  @foreach($user as $value)
+                    <option value="{{$value['mobile_phone']}}">{{$value['mobile_phone']}}</option>
+                  @endforeach
+              </select>  
+              </div>                
+            </div>
+
+            </div>
+            </form>
 
             <div class="modal-footer">
               <button type="button" class="btn btn-default pull-left" data-dismiss="modal">關閉</button>
-              <button type="button" id="save-game-predict" class="btn btn-primary">儲存變更</button>
+              <button type="button" id="save-game-bigandsmall-vip" class="btn btn-primary">儲存變更</button>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -161,6 +175,7 @@
         <!-- /.modal-dialog -->
       </div>
 @endsection
+
 @section('script')
   @parent
   <script type="text/javascript">
@@ -183,5 +198,52 @@
         ]
       } )
     });
+
+    $("#save-game-bigandsmall-vip").click(function() {
+      $.ajax({
+          type: "post",
+          headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+          data: $('#game_bigandsmall_vip_form').serialize(),
+          url: "/admin/manage/save-game-big-and-small-vip",
+          dataType: "json",
+          success: function(data) {
+              location.reload();
+              alert("儲存成功");
+          },
+          error: function(jqXHR) {
+              alert("發生錯誤, 請重新操作");
+          }
+      })
+    })
+
+    $(".game_vip_button").click(function() {
+        $.ajax({
+            type: "post",
+            headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+            data: {id: $(this).siblings("#game_id").val()},
+            url: "/admin/manage/game-big-and-small-vip-status",
+            dataType: "json",
+            success: function(data) {
+                changePredictForm(data)
+                changeChecked()
+                changeRadio($("[name=game_predict]"), data.game_predict)
+                changeRadio($("[name=game_result]"), data.game_result)
+                $('[name=game_bigandsmall_vip_id]').val(data.id)
+
+                if (data.vip) {
+                  $("[name='vip[]']").val(JSON.parse(data.vip)).select2({
+                    closeOnSelect: false
+                  })
+                } else {
+                  $("[name='vip[]']").val('').select2({
+                    closeOnSelect: false
+                  })
+                }
+            },
+            error: function(jqXHR) {
+                alert("發生錯誤, 請重新操作");
+            }
+        })
+    })
   </script>
 @endsection

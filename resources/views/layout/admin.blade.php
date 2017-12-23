@@ -98,8 +98,11 @@
           <ul class="treeview-menu">
             <li><a href="/admin/manage/ball"><i class="fa fa-circle-o"></i>讓分</a></li>
             <li><a href="/admin/manage/big-and-small-ball"><i class="fa fa-circle-o"></i>大小分</a></li>
+            <li><a href="/admin/manage/ball-vip"><i class="fa fa-circle-o"></i>讓分-Vip</a></li>
+            <li><a href="/admin/manage/big-and-small-ball-vip"><i class="fa fa-circle-o"></i>大小分-Vip</a></li>
           </ul>
         </li>
+        <li><a href="/admin/edit-information"><i class="fa fa-edit"></i> <span>編輯網站資料</span></a></li>
         <li><a href="/admin/legend-table"><i class="fa fa-get-pocket"></i> <span>新增聯盟</span></a></li>
         @if(Auth::user()['user_type'] == 'root')
         <li><a href="/admin/pauseEverybody"><i class="fa fa-bomb"></i> <span>緊急關閉所有權限</span></a></li>

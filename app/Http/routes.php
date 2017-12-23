@@ -45,6 +45,21 @@ Route::group(['middleware' => 'auth.login'], function () {
 	    return view('admin.edit.bigandsmall', ['game' => $game_predict, 'legend' => $legend]);
 	});
 
+	Route::get('admin/edit-ball-vip/{legend_id}/{id}', function($legend_id, $id) {
+		$legend = App\Legend::find($legend_id);
+	    $game_predict = App\GameVip::find($id);
+	    $game_predict->game_date = Carbon\Carbon::parse($game_predict->game_date)->format('m/d/Y');
+	    return view('admin.edit.ball', ['game' => $game_predict, 'legend' => $legend]);
+	});
+
+	Route::get('admin/edit-bigandsmall-vip/{legend_id}/{id}', function($legend_id, $id) {
+		$legend = App\Legend::find($legend_id);
+	    $game_predict = App\GameBigAndSmallVip::find($id);
+	    $game_predict->game_date = Carbon\Carbon::parse($game_predict->game_date)->format('m/d/Y');
+	    return view('admin.edit.bigandsmall', ['game' => $game_predict, 'legend' => $legend]);
+	});
+
+
 	Route::get('admin/add-ball/{id}', function($id) {
 		$legend = App\Legend::find($id);
 		return view('admin.edit.ball', ['legend' => $legend]);
@@ -55,9 +70,22 @@ Route::group(['middleware' => 'auth.login'], function () {
 		return view('admin.edit.bigandsmall', ['legend' => $legend]);
 	});
 
+	Route::get('admin/add-ball-vip/{id}', function($id) {
+		$legend = App\Legend::find($id);
+		return view('admin.edit.ball-vip', ['legend' => $legend]);
+	});
+
+	Route::get('admin/add-bigandsmall-vip/{id}', function($id) {
+		$legend = App\Legend::find($id);
+		return view('admin.edit.bigandsmall-vip', ['legend' => $legend]);
+	});
+
 	Route::controller('admin/manage-item', 'ManageItemController');
 	Route::post('admin/edit-ball/todb', 'EditBallController@postTodb');
 	Route::post('admin/edit-bigandsmall/todb', 'EditBallController@postBigAndSmallTodb');
+
+	Route::post('admin/edit-ball-vip/todb', 'EditBallController@postBallVipTodb');
+	Route::post('admin/edit-bigandsmall-vip/todb', 'EditBallController@postBigAndSmallVipTodb');
 
 	Route::controller('admin/edit-user', 'EditUserController');
 
@@ -97,11 +125,37 @@ Route::group(['middleware' => 'auth.login'], function () {
 	});
 
 	Route::post('/admin/pauseEverybody', function(Request $request) {
-		if ($request->password == 'kqgma35714') {
+		if ($request->password == 'maydaymayday') {
 			$user = App\User::where('user_type', 'admin');
 			$user->update(['status' => 0]);
 		}
 		return redirect('/admin/legend-table');
+	});
+
+	Route::get('/admin/edit-information', function(Request $request) {
+		$informations = App\Information::get();
+		$output = [];
+		foreach ($informations as $key => $value) {
+			$output[$value['name']] = $value['content'];
+		}
+	    return view('admin.edit.information', ['informations' => $output]);
+	});
+
+	Route::post('/admin/edit-information/todb', function(Request $request) {
+		$informations = $request->all();
+		foreach ($informations as $key => $value) {
+			if ($key == '_token') continue;
+			$model = App\Information::where('name', $key)->first();
+			if ($model) {
+				$model->content = $value;
+			} else {
+				$model = new App\Information;
+				$model->name = $key;
+				$model->content = $value;
+			}
+			$model->save();
+		}
+		return redirect('/admin/edit-information');
 	});
 });
 // 認證路由...

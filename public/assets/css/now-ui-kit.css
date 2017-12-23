@@ -3183,12 +3183,13 @@ h6,
 }
 
 p {
+    font-size: 1.3em;
     line-height: 1.61em;
 }
 
 .description p,
 p.description {
-    font-size: 1.14em;
+    font-size: 0.9em;
 }
 
 .title {
@@ -3588,7 +3589,7 @@ body {
 }
 
 .navbar p {
-    font-size: 15px;
+    font-size: 17.5px;
     display: inline-block;
     margin: 0;
     line-height: 21px;

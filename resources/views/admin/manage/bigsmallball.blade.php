@@ -4,7 +4,7 @@
 @section('content-table')
     <div class="form-group">
       <label>聯盟選單</label>
-      <form action="/admin/manage/ball" id='legend-select' method="post">
+      <form action="/admin/manage/big-and-small-ball" id='legend-select' method="post">
         {!! Form::token() !!}
         <select class="form-control" name="legend_id" onchange="$('#legend-select').submit()">
           @foreach ($legends as $legend)
@@ -66,6 +66,101 @@
     </tr>
     </tfoot>
     </table>
+@endsection
+
+@section('modal')
+      <div class="modal fade" id="modal-bigandsmall">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">預測分析</h4>
+            </div>
+              
+              <form id='game_bigandsmall_form'>
+              <input type="hidden" name="game_bigandsmall_id">
+
+              <div class="col-md-12">
+
+              <div class="form-group  col-md-6">
+                  <label>比賽分析</label>
+                  <div class="controls">
+                      <div class="switch" tabindex="0">
+                        <input type="checkbox" name="game_predict_status" value=""/>                    
+                      </div>
+                  </div>
+              </div>
+
+              <div class="form-group  col-md-6">
+                  <label>比賽結束</label>
+                  <div class="controls">
+                      <div class="switch" tabindex="0">
+                        <input type="checkbox" name="game_over" value=""/>                    
+                      </div>
+                  </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>主隊比數</label>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="fa fa-balance-scale"></i>
+                  </span>
+                  <input type="number" class="form-control" name="game_bigger_score" placeholder="">
+                </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>客隊比數</label>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="fa fa-balance-scale"></i>
+                  </span>
+                  <input type="number" class="form-control" name="game_smaller_score" placeholder="">
+                </div>
+              </div>
+            <!-- text input -->
+            <div class="form-group col-md-6">
+              <label>精準預測</label>
+              <!-- radio -->
+              <div class="form-group">
+                <label>
+                  <input type="radio" name="game_predict" class="minimal game_predict" value="0">
+                  大分
+                </label>
+                <label>
+                  <input type="radio" name="game_predict" class="minimal game_predict" value="1">
+                  小分
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label>賽事結果</label>
+              <div class="form-group">
+                <label>
+                  <input type="radio" name="game_result" class="minimal game_result" value="0">
+                  大分
+                </label>
+                <label>
+                  <input type="radio" name="game_result" class="minimal game_result" value="1">
+                  小分
+                </label>
+              </div>
+            </div>
+              </div>
+              </form>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">關閉</button>
+              <button type="button" id="save-game-bigandsmall" class="btn btn-primary">儲存變更</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
 @endsection
 
 @section('script')
