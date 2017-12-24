@@ -10,7 +10,6 @@
     <tr>
       <th>編號</th>
       <th>聯盟名稱</th>
-      <th>下注類型</th>
       <th>建立日期</th>
       <th>最新儲存時間</th>      
       <th>功能</th>
@@ -22,7 +21,6 @@
         <form action="save-sort">
         <td>{{$result['id']}}</td>
         <td>{{$result['name']}}</td>
-        <td>{{ ($result['bet_type'] == 1) ? '讓分' : '大小分' }}</td>
         <td>{{$result->created_at}}</td>
         <td>{{$result->updated_at}}</td>
         <td>
@@ -36,7 +34,6 @@
     <tr>
       <th>編號</th>
       <th>聯盟名稱</th>
-      <th>下注類型</th>
       <th>建立日期</th>
       <th>最新儲存時間</th>      
       <th>功能</th>
