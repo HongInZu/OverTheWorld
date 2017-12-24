@@ -166,15 +166,16 @@
         <td>{{$value['handicap']}} {{($value['handicap_type'] == 1) ? '平' : ''}}</td>
         <td>{{$value['smaller']}}</td>
         <td>
-            @if ($value['vip'] == null)
-            {{$value['vip'] = []}}
-            @endif
             @if(!$isLogin)
               請先登入帳號
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
-            @elseif (in_array($user['mobile_phone'], json_decode($value['vip'], true)) || ($value['game_over'] == 1))
+            @elseif (($value['game_over'] == 1))
               {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
+            @elseif ($value['vip'])
+              @if(in_array($user['mobile_phone'], json_decode($value['vip'], true)) || ($value['game_over'] == 1))
+                {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
+              @endif
             @else
               請先購買權限
             @endif
@@ -247,8 +248,12 @@
               請先登入帳號
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
-            @elseif (in_array($user['mobile_phone'], json_decode($value['vip'], true)) || ($value['game_over'] == 1))
-              {{($value->game_predict == 0) ? '大' : '小'}}
+            @elseif (($value['game_over'] == 1))
+              {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
+            @elseif ($value['vip'])
+              @if(in_array($user['mobile_phone'], json_decode($value['vip'], true)) || ($value['game_over'] == 1))
+                {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
+              @endif
             @else
               請先購買權限
             @endif
