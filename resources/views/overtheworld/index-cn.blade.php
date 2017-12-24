@@ -1,4 +1,4 @@
-@extends('overtheworld.layout-cn')
+@extends('overtheworld.layout')
 
 @section('content-table')
   @foreach ($legends as $key => $legend)
@@ -170,8 +170,12 @@
               请先登入帐号
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
-            @elseif (in_array($user['mobile_phone'], json_decode($value['vip'], true)) || ($value['game_over'] == 1))
+            @elseif (($value['game_over'] == 1))
               {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
+            @elseif (!empty($value['vip']))
+              @if(in_array($user['mobile_phone'], json_decode($value['vip'], true)))
+                {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
+              @endif
             @else
               请先购买权限
             @endif
@@ -241,8 +245,12 @@
               请先登入帐号
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
-            @elseif (in_array($user['mobile_phone'], json_decode($value['vip'], true)) || ($value['game_over'] == 1))
-              {{($value->game_predict == 0) ? '大' : '小'}}
+            @elseif (($value['game_over'] == 1))
+              {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
+            @elseif (!empty($value['vip']))
+              @if(in_array($user['mobile_phone'], json_decode($value['vip'], true)))
+                {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
+              @endif
             @else
               请先购买权限
             @endif
