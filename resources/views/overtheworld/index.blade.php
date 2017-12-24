@@ -167,7 +167,7 @@
         <td>{{$value['smaller']}}</td>
         <td>
             @if ($value['vip'] == null)
-            $value['vip'] = [];
+            {{$value['vip'] = []}}
             @endif
             @if(!$isLogin)
               請先登入帳號
@@ -241,7 +241,7 @@
         <td>{{$value['smaller']}}</td>
         <td>
             @if ($value['vip'] == null)
-            $value['vip'] = [];
+            {{$value['vip'] = []}}
             @endif
             @if(!$isLogin)
               請先登入帳號
