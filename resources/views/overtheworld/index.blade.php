@@ -166,6 +166,9 @@
         <td>{{$value['handicap']}} {{($value['handicap_type'] == 1) ? '平' : ''}}</td>
         <td>{{$value['smaller']}}</td>
         <td>
+            @if ($value['vip'] == null)
+            $value['vip'] = [];
+            @endif
             @if(!$isLogin)
               請先登入帳號
             @elseif ($value['game_predict_status'] == 0)
@@ -237,6 +240,9 @@
         <td>{{$value['handicap']}} {{($value['handicap_type'] == 1) ? '平' : ''}}</td>
         <td>{{$value['smaller']}}</td>
         <td>
+            @if ($value['vip'] == null)
+            $value['vip'] = [];
+            @endif
             @if(!$isLogin)
               請先登入帳號
             @elseif ($value['game_predict_status'] == 0)
