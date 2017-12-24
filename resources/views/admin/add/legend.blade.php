@@ -49,16 +49,6 @@
           <div class="box-body">
               <!-- text input -->
               <div class="form-group">
-                <label>球賽類型</label>
-                <br>
-                <label>讓分
-                  <input type="radio" name="bet_type" value="1" class="minimal" checked>
-                </label>大小分
-                <label>
-                  <input type="radio" name="bet_type" value="2" class="minimal">
-                </label>
-              </div>
-              <div class="form-group">
                 <label>聯盟名稱</label>
                 <input type="text" class="form-control" name="name" placeholder="ex.西甲" required>
               </div>

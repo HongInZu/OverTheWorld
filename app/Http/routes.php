@@ -96,7 +96,7 @@ Route::group(['middleware' => 'auth.login'], function () {
 	});
 
 	Route::post('/admin/add/legend-todb', function(Request $request){
-		$input = $request->only('name', 'bet_type');
+		$input = $request->only('name');
 		$legend = new App\Legend();
 		foreach ($input as $key => $value) {
 			if(!empty($value)) {
