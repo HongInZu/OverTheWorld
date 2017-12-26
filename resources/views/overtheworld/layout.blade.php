@@ -126,7 +126,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-lg-12 col-xl-12 ml-auto mr-auto">
-                            <h4 class="title title-up">球版分析 - 受讓分</h4>
+                            <h4 class="title title-up">球版分析 - 讓分</h4>
                             <!-- Tabs with Background on Card -->
                             <div class="card">
                                 <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
@@ -168,7 +168,7 @@
                         </div>
 
                         <div class="col-md-12 col-lg-12 col-xl-12 ml-auto mr-auto">
-                            <h4 class="title title-up">球版分析 - 受讓分 - Vip 賽事</h4>
+                            <h4 class="title title-up">球版分析 - 讓分 - Vip 賽事</h4>
                             <!-- Tabs with Background on Card -->
                             <div class="card">
                                 <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist" data-background-color="orange">
