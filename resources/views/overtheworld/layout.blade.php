@@ -15,7 +15,7 @@
     <link href="/js/DataTables/datatables.min.css" rel="stylesheet" />
     <link href="/js/DataTables/AutoFill-2.2.2/css/autoFill.bootstrap.min.css" rel="stylesheet" />
     <link href="/js/DataTables/AutoFill-2.2.2/css/autoFill.dataTables.min.css" rel="stylesheet" />
-
+    <link href="/plugins/vegas/vegas.min.css" rel="stylesheet" />
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -93,15 +93,15 @@
     </nav>
     <!-- End Navbar -->
     <div class="wrapper">
-        <div class="page-header clear-filter" filter-color="orange">
-            <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/header.jpg');">
+        <div class="page-header clear-filter" filter-color="orange"> <!-- filter-color="orange" -->
+            <div class="page-header-image" style="opacity:0.7;" data-parallax="true"">
             </div>
             <div class="container">
                 <div class="content-center brand">
                     <img class="n-logo" src="./img/Logo.png" alt="">
-                    <h1 class="h1-seo">馳名天下</h1>
-                    <h3>精準分析所有賽事 獲利翻盤就趁現在</h3>
-                </div>
+<!--                     <h1 class="h1-seo">馳名天下</h1>
+ --><!--                     <h3>精準分析所有賽事 獲利翻盤就趁現在</h3>
+ -->                </div>
             </div>
         </div>
 <!--         <div class="main">
@@ -384,7 +384,20 @@
 <script src="/assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
 <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
 <script src="/assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
+<script src="http://zeptojs.com/zepto.min.js"></script>
+<script src="/plugins/vegas/vegas.min.js" type="text/javascript"></script>
+
 <script type="text/javascript">
+
+    $(function() {
+        $('.page-header-image').vegas({
+            slides: [
+                { src: 'http://media.zenfs.com/en_us/News/Reuters/2014-07-05T175309Z_304896811_TB3EA751GBX8D_RTRMADP_3_SOCCER-WORLD-M60-ARG-BEL.JPG' },
+                { src: 'http://media.zenfs.com/en_us/News/gettyimages.com/germany-v-argentina-2014-fifa-20140713-213037-895.jpg' },
+                { src: 'http://pic.pimg.tw/worldcupvideo/1403762538-2079482990.jpg' }
+            ]
+        });
+    });
 
     $(document).ready(function() {
         // the body of this function is in assets/js/now-ui-kit.js
