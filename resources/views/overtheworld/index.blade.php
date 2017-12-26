@@ -3,7 +3,7 @@
 @section('content-table')
   @foreach ($legends as $key => $legend)
   <div class="tab-pane {{($key == 0)?'active' : ''}}" id="{{$legend['id']}}" role="tabpanel">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped" width="100%">
     <thead>
     <tr>
       <th>編號</th>
@@ -28,7 +28,9 @@
             @if ($permission || ($value['game_over'] == 1))
               {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
             @elseif(!$isLogin)
+            <span style="color: orange">
               請先登入帳號
+            </span>
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
             @else
@@ -38,12 +40,16 @@
         <td>{{$value->game_date}}</td>
         @if ($value['game_over'] == 1)
           <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
-          <td>
+          <td >
             @if($value['game_result'] == $value['game_predict'])
-              贏
+              <td style=" color: green">
+                赢
+              </td>
             @else
-              輸
-            @endif
+              <td style=" color: red">
+                輸
+              </td>
+            @endif          
           </td>
         @else
           <td></td>
@@ -74,7 +80,7 @@
 
   @foreach ($legends as $key => $legend)
   <div class="tab-pane {{($key == 0)?'active' : ''}}" id="{{$legend['id']}}bigsmall" role="tabpanel">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped" width="100%">
     <thead>
     <tr>
       <th>編號</th>
@@ -99,7 +105,9 @@
             @if ($permission || ($value['game_over'] == 1))
               {{($value->game_predict == 0) ? '大' : '小'}}
             @elseif(!$isLogin)
+            <span style="color: orange">
               請先登入帳號
+            </span>
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
             @else
@@ -111,10 +119,14 @@
           <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
           <td>
             @if($value['game_result'] == $value['game_predict'])
-              贏
+              <td style=" color: green">
+                赢
+              </td>
             @else
-              輸
-            @endif
+              <td style=" color: red">
+                輸
+              </td>
+            @endif          
           </td>
         @else
           <td></td>
@@ -144,7 +156,7 @@
 @section('content-table-vip')
   @foreach ($legends as $key => $legend)
   <div class="tab-pane {{($key == 0)?'active' : ''}}" id="{{$legend['id']}}-vip" role="tabpanel">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped" width="100%">
     <thead>
     <tr>
       <th>編號</th>
@@ -169,7 +181,9 @@
             @if (($value['game_over'] == 1))
               {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
             @elseif(!$isLogin)
+            <span style="color: orange">
               請先登入帳號
+            </span>
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
             @elseif (!empty($value['vip']))
@@ -185,10 +199,14 @@
           <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
           <td>
             @if($value['game_result'] == $value['game_predict'])
-              贏
+              <td style=" color: green">
+                赢
+              </td>
             @else
-              輸
-            @endif
+              <td style=" color: red">
+                輸
+              </td>
+            @endif          
           </td>
         @else
           <td></td>
@@ -219,7 +237,7 @@
 
   @foreach ($legends as $key => $legend)
   <div class="tab-pane {{($key == 0)?'active' : ''}}" id="{{$legend['id']}}bigsmall-vip" role="tabpanel">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped" width="100%">
     <thead>
     <tr>
       <th>編號</th>
@@ -244,7 +262,9 @@
             @if (($value['game_over'] == 1))
               {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
             @elseif(!$isLogin)
+            <span style="color: orange">
               請先登入帳號
+            </span>
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
             @elseif (!empty($value['vip']))
@@ -260,10 +280,14 @@
           <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
           <td>
             @if($value['game_result'] == $value['game_predict'])
-              贏
+              <td style=" color: green">
+                赢
+              </td>
             @else
-              輸
-            @endif
+              <td style=" color: red">
+                輸
+              </td>
+            @endif          
           </td>
         @else
           <td></td>

@@ -402,7 +402,10 @@
     $(document).ready(function() {
         // the body of this function is in assets/js/now-ui-kit.js
         $('.table-striped').DataTable({
-            autoFill: true
+            autoFill: true,
+            "autoWidth": true,
+            bAutoWidth: false,
+            "scrollX": true
         });
         nowuiKit.initSliders();
     });

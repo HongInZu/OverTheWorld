@@ -308,9 +308,9 @@
             <div class="modal-dialog login animated">
                 <div class="modal-content">
                    <div class="modal-header">
-                      <h4 class="modal-title">登入</h4>
+                      <h4 class="modal-title" style="margin-top: 0px;">登入</h4>
                   </div>
-                  <div class="modal-body">  
+                  <div class="modal-body" style="padding-top: 0px">  
                       <div class="box">
                            <div class="content">
                               <div class="error"></div>
@@ -392,9 +392,10 @@
     $(function() {
         $('.page-header-image').vegas({
             slides: [
-                { src: 'http://media.zenfs.com/en_us/News/Reuters/2014-07-05T175309Z_304896811_TB3EA751GBX8D_RTRMADP_3_SOCCER-WORLD-M60-ARG-BEL.JPG' },
-                { src: 'http://media.zenfs.com/en_us/News/gettyimages.com/germany-v-argentina-2014-fifa-20140713-213037-895.jpg' },
-                { src: 'http://pic.pimg.tw/worldcupvideo/1403762538-2079482990.jpg' }
+                { src: './img/1.jpg' },
+                { src: './img/2.jpg' },
+                { src: './img/3.jpg' },
+                { src: './img/4.jpg' }
             ]
         });
     });
@@ -402,7 +403,10 @@
     $(document).ready(function() {
         // the body of this function is in assets/js/now-ui-kit.js
         $('.table-striped').DataTable({
-            autoFill: true
+            autoFill: true,
+            "autoWidth": true,
+            bAutoWidth: false,
+            "scrollX": true
         });
         nowuiKit.initSliders();
     });

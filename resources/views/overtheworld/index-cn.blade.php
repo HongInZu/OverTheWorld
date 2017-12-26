@@ -28,7 +28,9 @@
             @if ($permission || ($value['game_over'] == 1))
               {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
             @elseif(!$isLogin)
-              请先登入帐号
+              <span style="color: orange">
+                请先登入帐号
+              </span>
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
             @else
@@ -38,11 +40,14 @@
         <td>{{$value->game_date}}</td>
         @if ($value['game_over'] == 1)
           <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
-          <td>
             @if($value['game_result'] == $value['game_predict'])
-              赢
+              <td style=" color: green">
+                赢
+              </td>
             @else
-              输
+              <td style=" color: red">
+                输
+              </td>
             @endif
           </td>
         @else
@@ -99,7 +104,9 @@
             @if ($permission || ($value['game_over'] == 1))
               {{($value->game_predict == 0) ? '大' : '小'}}
             @elseif(!$isLogin)
-              请先登入帐号
+              <span style="color: orange">
+                请先登入帐号
+              </span>
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
             @else
@@ -111,10 +118,14 @@
           <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
           <td>
             @if($value['game_result'] == $value['game_predict'])
-              赢
+              <td style=" color: green">
+                赢
+              </td>
             @else
-              输
-            @endif
+              <td style=" color: red">
+                输
+              </td>
+            @endif          
           </td>
         @else
           <td></td>
@@ -169,7 +180,9 @@
             @if (($value['game_over'] == 1))
               {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
             @elseif(!$isLogin)
-              请先登入帐号
+              <span style="color: orange">
+                请先登入帐号
+              </span>
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
             @elseif (!empty($value['vip']))
@@ -185,10 +198,14 @@
           <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
           <td>
             @if($value['game_result'] == $value['game_predict'])
-              赢
+              <td style=" color: green">
+                赢
+              </td>
             @else
-              输
-            @endif
+              <td style=" color: red">
+                输
+              </td>
+            @endif          
           </td>
         @else
           <td></td>
@@ -244,7 +261,9 @@
             @if (($value['game_over'] == 1))
               {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
             @elseif(!$isLogin)
-              请先登入帐号
+              <span style="color: orange">
+                请先登入帐号
+              </span>
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
             @elseif (!empty($value['vip']))
@@ -260,10 +279,14 @@
           <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
           <td>
             @if($value['game_result'] == $value['game_predict'])
-              赢
+              <td style=" color: green">
+                赢
+              </td>
             @else
-              输
-            @endif
+              <td style=" color: red">
+                输
+              </td>
+            @endif          
           </td>
         @else
           <td></td>
