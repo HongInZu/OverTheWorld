@@ -35,10 +35,10 @@ class IndexController extends Controller
         if (env('LANGUAGE') == 'CN') {
             return view('overtheworld.index-cn', 
                 [
-                'gamePredict' => GamePredict::get()->groupBy('legend_id'), 
-                'gameBigAndSmall' => GameBigAndSmall::get()->groupBy('legend_id'), 
-                'gameBigAndSmallVip' => GameBigAndSmallVip::get()->groupBy('legend_id'), 
-                'gameVip' => GameVip::get()->groupBy('legend_id'), 
+                'gamePredict' => GamePredict::orderBy('created_at', -1)->get()->groupBy('legend_id'), 
+                'gameBigAndSmall' => GameBigAndSmall::orderBy('created_at', -1)->get()->groupBy('legend_id'), 
+                'gameBigAndSmallVip' => GameBigAndSmallVip::orderBy('created_at', -1)->get()->groupBy('legend_id'), 
+                'gameVip' => GameVip::orderBy('created_at', -1)->get()->groupBy('legend_id'), 
                 'legends' => \App\Legend::where('status', 1)->get(), 
                 'permission' => $permission, 
                 'user' => $user, 
