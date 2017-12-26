@@ -69,13 +69,13 @@
                           </a>
                         @endif
                     </li>
-<!--                     <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
-                            <i class="fa fa-twitter"></i>
-                            <p class="d-lg-none d-xl-none">Twitter</p>
+                    <li class="nav-item">
+                        <a class="nav-link" rel="tooltip" title="@ody7975j" data-placement="bottom" href="https://line.me/R/ti/p/%40ody7975j" target="_blank">
+                            <i class="fa fa-address-book"></i>
+                            <p class="">Line</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+<!--                     <li class="nav-item">
                         <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
                             <i class="fa fa-facebook-square"></i>
                             <p class="d-lg-none d-xl-none">Facebook</p>
