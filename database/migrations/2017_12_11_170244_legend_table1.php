@@ -11,7 +11,7 @@ class LegendTable1 extends Migration
      * @return void
      */
     public function up()
-    // {
+    {
     //     Schema::table('legends', function ($table) {
     //         $table->unique('code');
     //     });
