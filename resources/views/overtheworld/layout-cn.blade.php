@@ -98,7 +98,7 @@
             </div>
             <div class="container">
                 <div class="content-center brand">
-                    <img class="n-logo" src="./img/horse_logo.png" alt="">
+                    <img class="n-logo" src="./img/Logo.png" alt="">
 <!--                     <h1 class="h1-seo">驰名天下</h1>
  --><!--                     <h3>精准分析所有赛事 获利翻盘就趁现在</h3>
  -->                </div>
