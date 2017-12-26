@@ -40,15 +40,15 @@
         <td>{{$value->game_date}}</td>
         @if ($value['game_over'] == 1)
           <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
-          <td >
+          <td>
             @if($value['game_result'] == $value['game_predict'])
-              <td style=" color: green">
+              <span style=" color: green">
                 赢
-              </td>
+              </span>
             @else
-              <td style=" color: red">
+              <span style=" color: red">
                 輸
-              </td>
+              </span>
             @endif          
           </td>
         @else
@@ -119,13 +119,13 @@
           <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
           <td>
             @if($value['game_result'] == $value['game_predict'])
-              <td style=" color: green">
+              <span style=" color: green">
                 赢
-              </td>
+              </span>
             @else
-              <td style=" color: red">
+              <span style=" color: red">
                 輸
-              </td>
+              </span>
             @endif          
           </td>
         @else
@@ -199,13 +199,13 @@
           <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
           <td>
             @if($value['game_result'] == $value['game_predict'])
-              <td style=" color: green">
+              <span style=" color: green">
                 赢
-              </td>
+              </span>
             @else
-              <td style=" color: red">
+              <span style=" color: red">
                 輸
-              </td>
+              </span>
             @endif          
           </td>
         @else
@@ -280,13 +280,13 @@
           <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
           <td>
             @if($value['game_result'] == $value['game_predict'])
-              <td style=" color: green">
+              <span style=" color: green">
                 赢
-              </td>
+              </span>
             @else
-              <td style=" color: red">
+              <span style=" color: red">
                 輸
-              </td>
+              </span>
             @endif          
           </td>
         @else
