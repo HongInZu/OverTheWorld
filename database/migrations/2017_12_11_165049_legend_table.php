@@ -12,13 +12,13 @@ class LegendTable extends Migration
      */
     public function up()
     {
-        Schema::create('legend', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->index();
-            $table->string('code')->index();
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
-        });    
+        // Schema::create('legend', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->string('name')->index();
+        //     $table->string('code')->index();
+        //     $table->timestamp('created_at');
+        //     $table->timestamp('updated_at');
+        // });    
     }
 
     /**
