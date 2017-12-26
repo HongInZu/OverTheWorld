@@ -1,4 +1,4 @@
-@extends('overtheworld.layout')
+@extends('overtheworld.layout-cn')
 
 @section('content-table')
   @foreach ($legends as $key => $legend)
