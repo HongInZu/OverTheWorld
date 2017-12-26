@@ -308,9 +308,9 @@
             <div class="modal-dialog login animated">
                 <div class="modal-content">
                    <div class="modal-header">
-                      <h4 class="modal-title">登入</h4>
+                      <h4 class="modal-title" style="margin-top: 0px;">登入</h4>
                   </div>
-                  <div class="modal-body">  
+                  <div class="modal-body" style="padding-top: 0px">  
                       <div class="box">
                            <div class="content">
                               <div class="error"></div>
