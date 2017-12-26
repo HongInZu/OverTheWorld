@@ -83,6 +83,7 @@ return array(
     'Legend' => $baseDir . '/database/migrations/2017_12_20_040212_legend.php',
     'LegendTable' => $baseDir . '/database/migrations/2017_12_11_165049_legend_table.php',
     'LegendTable1' => $baseDir . '/database/migrations/2017_12_11_170244_legend_table1.php',
+    'Legendstatus' => $baseDir . '/database/migrations/2017_12_26_132940_legendstatus.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
     'PHPUnit\\Framework\\AssertionFailedError' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/AssertionFailedError.php',
     'PHPUnit\\Framework\\BaseTestListener' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',

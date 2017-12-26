@@ -360,6 +360,7 @@ class ComposerStaticInite767649030f797c1a2da4b6fa22a6442
         'Legend' => __DIR__ . '/../..' . '/database/migrations/2017_12_20_040212_legend.php',
         'LegendTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_11_165049_legend_table.php',
         'LegendTable1' => __DIR__ . '/../..' . '/database/migrations/2017_12_11_170244_legend_table1.php',
+        'Legendstatus' => __DIR__ . '/../..' . '/database/migrations/2017_12_26_132940_legendstatus.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/AssertionFailedError.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',

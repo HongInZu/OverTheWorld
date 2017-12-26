@@ -157,6 +157,17 @@ Route::group(['middleware' => 'auth.login'], function () {
 		}
 		return redirect('/admin/edit-information');
 	});
+
+	Route::post('/admin/legends/status-change', function(Request $request) {
+		$legend = App\Legend::find($request->id);
+		$legend->status = $request->status;
+		if ($legend->save()) {
+			return [true];
+		} else {
+			return [false];
+		}
+	});
+
 });
 // 認證路由...
 Route::controller('', 'IndexController');

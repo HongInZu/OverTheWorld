@@ -12,13 +12,13 @@ class Information extends Migration
      */
     public function up()
     {
-        Schema::create('Information', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->text('content');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
-        });
+        // Schema::create('Information', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->string('name');
+        //     $table->text('content');
+        //     $table->timestamp('created_at');
+        //     $table->timestamp('updated_at');
+        // });
     }
 
     /**
