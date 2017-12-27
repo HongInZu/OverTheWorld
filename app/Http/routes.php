@@ -168,6 +168,29 @@ Route::group(['middleware' => 'auth.login'], function () {
 		}
 	});
 
+	Route::get('/admin/delete-ball-vip/{legend_id}/{id}', function($legend_id, $id) {
+		$game = App\GameVip::find($id);
+		$game->delete();
+		return back();
+	});
+
+	Route::get('/admin/delete-ball/{legend_id}/{id}', function($legend_id, $id) {
+		$game = App\GamePredict::find($id);
+		$game->delete();
+		return back();
+	});
+
+	Route::get('/admin/delete-ball-big-and-small/{legend_id}/{id}', function($legend_id, $id) {
+		$game = App\GameBigAndSmall::find($id);
+		$game->delete();
+		return back();
+	});
+
+	Route::get('/admin/delete-ball-big-and-small-vip/{legend_id}/{id}', function($legend_id, $id) {
+		$game = App\GameBigAndSmallVip::find($id);
+		$game->delete();
+		return back();
+	});
 });
 // 認證路由...
 Route::controller('', 'IndexController');

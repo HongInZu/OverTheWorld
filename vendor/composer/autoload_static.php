@@ -284,6 +284,7 @@ class ComposerStaticInite767649030f797c1a2da4b6fa22a6442
 
     public static $classMap = array (
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
+        'Delete' => __DIR__ . '/../..' . '/database/migrations/2017_12_27_145833_delete.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',

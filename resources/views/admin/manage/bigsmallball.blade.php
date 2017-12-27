@@ -47,6 +47,7 @@
           <a class="btn btn-app" href="/admin/edit-bigandsmall/{{$result->legend_id}}/{{$result->id}}"><i class="fa fa-edit"></i> 編輯</a>
           <input type="hidden" value="{{$result->id}}" id="game_id">
           <a class="btn btn-app game_bigandsmall_button" data-toggle="modal" data-target="#modal-bigandsmall"><i class="fa fa-bar-chart"></i> 預測</a>
+          <a class="btn btn-app" href="/admin/delete-ball-big-and-small/{{$result->legend_id}}/{{$result->id}}" onclick="return(confirm('確定要刪除嗎') ? true : false)"><i class="fa fa-trash"></i> 刪除</a>
         </td>
         <form>
       </tr>
