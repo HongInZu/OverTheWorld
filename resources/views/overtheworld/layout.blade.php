@@ -406,12 +406,12 @@
             "scrollX": true,
             "autoWidth": true,
             "columnDefs": [
-                { "width": "17%", "targets": 1 },
-                { "width": "13%", "targets": 2 },
-                { "width": "17%", "targets": 3 },
-                { "width": "17%", "targets": 4 },
-                { "width": "17%", "targets": 5 },
-                { "width": "10%", "targets": 6 },
+                { "width": "15%", "targets": 1 },
+                { "width": "8%", "targets": 2 },
+                { "width": "15%", "targets": 3 },
+                { "width": "15%", "targets": 4 },
+                { "width": "13%", "targets": 5 },
+                { "width": "9%", "targets": 6 },
             ]
         });
 
