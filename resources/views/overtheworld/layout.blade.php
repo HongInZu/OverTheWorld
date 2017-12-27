@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
     <link href="/js/DataTables/datatables.min.css" rel="stylesheet" />
-    <link href="/js/DataTables/AutoFill-2.2.2/css/autoFill.bootstrap.min.css" rel="stylesheet" />
-    <link href="/js/DataTables/AutoFill-2.2.2/css/autoFill.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/jqueryui/dataTables.jqueryui.css">
+
     <link href="/plugins/vegas/vegas.min.css" rel="stylesheet" />
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
@@ -371,9 +372,8 @@
 <!--   Core JS Files   -->
 <script src="/assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/DataTables/datatables.min.js"></script>
-<script type="text/javascript" src="js/DataTables/AutoFill-2.2.2/js/dataTables.autoFill.min.js"></script>
-<script type="text/javascript" src="js/DataTables/AutoFill-2.2.2/js/dataTables.autoFill.min.js"></script>
-<script type="text/javascript" src="js/DataTables/AutoFill-2.2.2/js/autoFill.bootstrap.min.js"></script>
+<script type="text/javascript" language="javascript" src="http://cdn.datatables.net/1.10-dev/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/jqueryui/dataTables.jqueryui.js"></script>
 <script src="/assets/js/core/popper.min.js" type="text/javascript"></script>
 <script src="/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
@@ -402,12 +402,17 @@
 
     $(document).ready(function() {
         // the body of this function is in assets/js/now-ui-kit.js
-        $('.table-striped').DataTable({
-            autoFill: true,
+        table = $('.table-striped').DataTable({
+            "scrollX": true,
             "autoWidth": true,
-            bAutoWidth: false,
-            "scrollX": true
         });
+
+        $('.nav-link').click(function(){
+            setTimeout(function(){
+                table.columns.adjust().draw();
+            }, 0.5);
+        })
+
         nowuiKit.initSliders();
     });
 
