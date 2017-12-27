@@ -413,6 +413,7 @@
                 { "width": "15%", "targets": 4 },
                 { "width": "13%", "targets": 5 },
                 { "width": "9%", "targets": 6 },
+                { "width": "8%", "targets": 7 },
             ]
         });
 
