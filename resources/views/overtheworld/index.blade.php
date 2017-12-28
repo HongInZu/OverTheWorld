@@ -260,7 +260,7 @@
         <td>{{$value['smaller']}}</td>
         <td>
             @if (($value['game_over'] == 1))
-              {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
+              {{($value->game_predict == 0) ? '大' : '小'}}
             @elseif(!$isLogin)
             <span style="color: orange">
               請先登入帳號
