@@ -189,6 +189,8 @@
             @elseif (!empty($value['vip']))
               @if(in_array($user['mobile_phone'], json_decode($value['vip'], true)))
                 {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
+              @else
+                請先購買權限
               @endif
             @else
               請先購買權限
@@ -269,7 +271,9 @@
               正在分析中
             @elseif (!empty($value['vip']))
               @if(in_array($user['mobile_phone'], json_decode($value['vip'], true)))
-                {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
+                {{($value->game_predict == 0) ? '大' : '小'}}
+              @else
+                請先購買權限
               @endif
             @else
               請先購買權限

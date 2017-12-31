@@ -37,7 +37,7 @@
         <td>{{$result['handicap']}} {{($result['handicap_type'] == 1) ? '平' : ''}}</td>
         <td>{{$result['smaller']}}</td>
         <td>@if (!empty($result->game_predict))
-                {{($result->game_predict == 0) ? $result['bigger'] : $result['smaller']}}
+                {{($result->game_predict == 0) ? '大' : '小'}}
             @endif
         </td>
         <td>{{$result->game_date}}</td>

@@ -50,6 +50,7 @@
                   <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab_1" data-toggle="tab">匯款資訊</a></li>
                     <li><a href="#tab_2" data-toggle="tab">條款與保護</a></li>
+                    <li><a href="#tab_3" data-toggle="tab">球版標題</a></li>
                   </ul>
                   <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
@@ -68,6 +69,26 @@
                       </div>
                     </div>
                     <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_3">
+                      <div class="box-body pad">
+                        <div class="form-group">
+                          <label>球版標題 - 讓分</label>
+                          <input type="text" class="form-control" name="ball-title" placeholder="" value="{{$informations['ball-title'] or ''}}" required>
+                        </div>
+                        <div class="form-group">
+                          <label>球版標題 - 大小分</label>
+                          <input type="text" class="form-control" name="bigandsmall-title" placeholder="" value="{{$informations['bigandsmall-title'] or ''}}" required>
+                        </div>
+                        <div class="form-group">
+                          <label>球版標題 - 讓分 - 單場賽事</label>
+                          <input type="text" class="form-control" name="ball-title-vip" placeholder="" value="{{$informations['ball-title-vip'] or ''}}" required>
+                        </div>
+                        <div class="form-group">
+                          <label>球版標題 - 大小分 - 單場賽事</label>
+                          <input type="text" class="form-control" name="bigandsmall-title-vip" placeholder="" value="{{$informations['bigandsmall-title-vip'] or ''}}" required>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <!-- /.tab-content -->
                   <div class="box-footer">
