@@ -34,7 +34,9 @@
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
             @else
+            <span style=" color: red">
               請先購買權限
+            </span>
             @endif
         </td>
         <td>{{$value->game_date}}</td>
@@ -111,7 +113,9 @@
             @elseif ($value['game_predict_status'] == 0)
               正在分析中
             @else
+            <span style=" color: red">
               請先購買權限
+            </span>
             @endif
         </td>
         <td>{{$value->game_date}}</td>
@@ -190,10 +194,14 @@
               @if(in_array($user['mobile_phone'], json_decode($value['vip'], true)))
                 {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
               @else
+              <span style=" color: red">
                 請先購買權限
+              </span>
               @endif
             @else
+            <span style=" color: red">
               請先購買權限
+            </span>
             @endif
         </td>
         <td>{{$value->game_date}}</td>
@@ -273,10 +281,14 @@
               @if(in_array($user['mobile_phone'], json_decode($value['vip'], true)))
                 {{($value->game_predict == 0) ? '大' : '小'}}
               @else
+              <span style=" color: red">
                 請先購買權限
+              </span>
               @endif
             @else
+            <span style=" color: red">
               請先購買權限
+            </span>
             @endif
         </td>
         <td>{{$value->game_date}}</td>
