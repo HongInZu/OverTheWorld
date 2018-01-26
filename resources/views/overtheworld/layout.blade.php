@@ -24,6 +24,15 @@
     <link href="login/login-register.css" rel="stylesheet" />
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <script src="login/login-register.js" type="text/javascript"></script>
+    <style type="text/css" media="screen">
+        td.details-control {
+            background: url('/img/details_open.png') no-repeat center center;
+            cursor: pointer;
+        }
+        tr.shown td.details-control {
+            background: url('/img/details_close.png') no-repeat center center;
+        }
+    </style>
 </head>
 
 <body class="index-page sidebar-collapse">
@@ -399,32 +408,6 @@
         });
     });
 
-    $(document).ready(function() {
-        // the body of this function is in assets/js/now-ui-kit.js
-        table = $('.table-striped').DataTable({
-            "scrollX": true,
-            "autoWidth": true,
-            "columnDefs": [
-                { "width": "8%", "targets": 0 },
-                { "width": "15%", "targets": 1 },
-                { "width": "8%", "targets": 2 },
-                { "width": "15%", "targets": 3 },
-                { "width": "15%", "targets": 4 },
-                { "width": "13%", "targets": 5 },
-                { "width": "9%", "targets": 6 },
-                { "width": "8%", "targets": 7 },
-            ]
-        });
-
-        $('.nav-link').click(function(){
-            setTimeout(function(){
-                table.columns.adjust().draw();
-            }, 0.5);
-        })
-
-        nowuiKit.initSliders();
-    });
-
     function scrollToDownload() {
 
         if ($('.section-download').length != 0) {
@@ -452,5 +435,7 @@
         }
     }
 </script>
+
+@yield('table-script')
 
 </html>

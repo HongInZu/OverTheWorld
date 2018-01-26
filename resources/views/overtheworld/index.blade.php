@@ -8,11 +8,8 @@
     <tr>
       <th>編號</th>
       <th>讓分</th>
-      <th>盤口</th>
       <th>受讓</th>
-      <th>精準預測</th>
       <th>球賽日期</th>
-      <th>比分</th>
       <th>結果</th>
     </tr>
     </thead>
@@ -22,26 +19,8 @@
       <tr>
         <td>{{$key+1}}</td>
         <td>{{$value['bigger']}}</td>
-        <td>{{$value['handicap']}} {{($value['handicap_type'] == 1) ? '平' : ''}}</td>
         <td>{{$value['smaller']}}</td>
-        <td>
-            @if ($permission || ($value['game_over'] == 1))
-              {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
-            @elseif(!$isLogin)
-            <span style="color: orange">
-              請先登入帳號
-            </span>
-            @elseif ($value['game_predict_status'] == 0)
-              正在分析中
-            @else
-            <span style=" color: red">
-              請先購買權限
-            </span>
-            @endif
-        </td>
         <td>{{$value->game_date}}</td>
-        @if ($value['game_over'] == 1)
-          <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
           <td>
             @if($value['game_result'] == $value['game_predict'])
               <span style=" color: green">
@@ -53,10 +32,6 @@
               </span>
             @endif          
           </td>
-        @else
-          <td></td>
-          <td></td>
-        @endif
       </tr>
       @endforeach
       @endif
@@ -65,11 +40,8 @@
     <tr>
       <th>編號</th>
       <th>讓分</th>
-      <th>盤口</th>
       <th>受讓</th>
-      <th>精準預測</th>
       <th>球賽日期</th>
-      <th>比分</th>
       <th>結果</th>
     </tr>
     </tfoot>
@@ -328,4 +300,79 @@
     </table>
   </div>
   @endforeach
+@endsection
+
+
+@section('table-script')
+<script type="text/javascript">
+    /* Formatting function for row details - modify as you need */
+    function format ( d ) {
+        // `d` is the original data object for the row
+        return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+            '<tr>'+
+                '<td>Full name:</td>'+
+                '<td>'+d.name+'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td>Extension number:</td>'+
+                '<td>'+d.extn+'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td>Extra info:</td>'+
+                '<td>And any further details here (images etc)...</td>'+
+            '</tr>'+
+        '</table>';
+    }
+     
+    $(document).ready(function() {
+
+         
+        // Add event listener for opening and closing details
+        $('.table-striped tbody').on('click', 'td.details-control', function () {
+            var tr = $(this).closest('tr');
+            var row = table.row( tr );
+     
+            if ( row.child.isShown() ) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                // Open this row
+                row.child( format('d') ).show();
+                tr.addClass('shown');
+            }
+        } );
+    } );
+
+    $(document).ready(function() {
+        // the body of this function is in assets/js/now-ui-kit.js
+        table = $('.table-striped').DataTable({
+            "scrollX": true,
+            "autoWidth": true,
+            "columns": [
+                {
+                    "className":      'details-control',
+                    "orderable":      false,
+                    "data":           null,
+                    "defaultContent": ''
+                },
+                {},
+                {},
+                {},
+                {}
+            ],
+        });
+
+        $('.nav-link').click(function(){
+            setTimeout(function(){
+                table.columns.adjust().draw();
+            }, 0.5);
+        })
+
+        nowuiKit.initSliders();
+    });
+
+
+</script>
 @endsection
