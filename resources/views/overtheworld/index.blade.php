@@ -16,12 +16,13 @@
     <tbody>
       @if (isset($gamePredict[$legend['id']]))
       @foreach ($gamePredict[$legend['id']] as $key => $value)
-      <tr>
-        <td>{{$key+1}}</td>
+      <tr name="game_predict">
+        <td name="{{$value['id']}}">{{$key+1}}</td>
         <td>{{$value['bigger']}}</td>
         <td>{{$value['smaller']}}</td>
         <td>{{$value->game_date}}</td>
-          <td>
+        @if ($value['game_over'] == 1)
+        <td>
             @if($value['game_result'] == $value['game_predict'])
               <span style=" color: green">
                 赢
@@ -31,7 +32,12 @@
                 輸
               </span>
             @endif          
-          </td>
+        </td>
+        @else
+        <td><span style=" color: blue">
+                比賽結果尚未出爐
+              </span></td>
+        @endif
       </tr>
       @endforeach
       @endif
@@ -59,41 +65,21 @@
     <tr>
       <th>編號</th>
       <th>主隊</th>
-      <th>盤口</th>
       <th>客隊</th>
-      <th>精準預測</th>
       <th>球賽日期</th>
-      <th>比分</th>
       <th>結果</th>
     </tr>
     </thead>
     <tbody>
       @if (isset($gameBigAndSmall[$legend['id']]))
       @foreach ($gameBigAndSmall[$legend['id']] as $key => $value)
-      <tr>
-        <td>{{$key+1}}</td>
+      <tr name="game_predict_bigandsmall">
+        <td name="{{$value['id']}}" >{{$key+1}}</td>
         <td>{{$value['bigger']}}</td>
-        <td>{{$value['handicap']}} {{($value['handicap_type'] == 1) ? '平' : ''}}</td>
         <td>{{$value['smaller']}}</td>
-        <td>
-            @if ($permission || ($value['game_over'] == 1))
-              {{($value->game_predict == 0) ? '大' : '小'}}
-            @elseif(!$isLogin)
-            <span style="color: orange">
-              請先登入帳號
-            </span>
-            @elseif ($value['game_predict_status'] == 0)
-              正在分析中
-            @else
-            <span style=" color: red">
-              請先購買權限
-            </span>
-            @endif
-        </td>
         <td>{{$value->game_date}}</td>
         @if ($value['game_over'] == 1)
-          <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
-          <td>
+        <td>
             @if($value['game_result'] == $value['game_predict'])
               <span style=" color: green">
                 赢
@@ -103,10 +89,11 @@
                 輸
               </span>
             @endif          
-          </td>
+        </td>
         @else
-          <td></td>
-          <td></td>
+        <td><span style=" color: blue">
+                比賽結果尚未出爐
+              </span></td>
         @endif
       </tr>
       @endforeach
@@ -115,14 +102,12 @@
     <tfoot>
     <tr>
       <th>編號</th>
-      <th>讓分</th>
-      <th>盤口</th>
-      <th>受讓</th>
-      <th>精準預測</th>
+      <th>主隊</th>
+      <th>客隊</th>
       <th>球賽日期</th>
-      <th>比分</th>
       <th>結果</th>
     </tr>
+    </tbody>
     </tfoot>
     </table>
   </div>
@@ -137,48 +122,20 @@
     <tr>
       <th>編號</th>
       <th>讓分</th>
-      <th>盤口</th>
       <th>受讓</th>
-      <th>精準預測</th>
       <th>球賽日期</th>
-      <th>比分</th>
       <th>結果</th>
     </tr>
     </thead>
     <tbody>
       @if (isset($gameVip[$legend['id']]))
       @foreach ($gameVip[$legend['id']] as $key => $value)
-      <tr>
-        <td>{{$key+1}}</td>
+      <tr name="game_predict_vip">
+        <td name="{{$value['id']}}" >{{$key+1}}</td>
         <td>{{$value['bigger']}}</td>
-        <td>{{$value['handicap']}} {{($value['handicap_type'] == 1) ? '平' : ''}}</td>
         <td>{{$value['smaller']}}</td>
-        <td>
-            @if (($value['game_over'] == 1))
-              {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
-            @elseif(!$isLogin)
-            <span style="color: orange">
-              請先登入帳號
-            </span>
-            @elseif ($value['game_predict_status'] == 0)
-              正在分析中
-            @elseif (!empty($value['vip']))
-              @if(in_array($user['mobile_phone'], json_decode($value['vip'], true)))
-                {{($value->game_predict == 0) ? $value['bigger'] : $value['smaller']}}
-              @else
-              <span style=" color: red">
-                請先購買權限
-              </span>
-              @endif
-            @else
-            <span style=" color: red">
-              請先購買權限
-            </span>
-            @endif
-        </td>
         <td>{{$value->game_date}}</td>
         @if ($value['game_over'] == 1)
-          <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
           <td>
             @if($value['game_result'] == $value['game_predict'])
               <span style=" color: green">
@@ -191,8 +148,9 @@
             @endif          
           </td>
         @else
-          <td></td>
-          <td></td>
+          <td><span style=" color: blue">
+                比賽結果尚未出爐
+              </span></td>
         @endif
       </tr>
       @endforeach
@@ -202,13 +160,11 @@
     <tr>
       <th>編號</th>
       <th>讓分</th>
-      <th>盤口</th>
       <th>受讓</th>
-      <th>精準預測</th>
       <th>球賽日期</th>
-      <th>比分</th>
       <th>結果</th>
     </tr>
+    </tbody>
     </tfoot>
     </table>
   </div>
@@ -224,48 +180,20 @@
     <tr>
       <th>編號</th>
       <th>主隊</th>
-      <th>盤口</th>
       <th>客隊</th>
-      <th>精準預測</th>
       <th>球賽日期</th>
-      <th>比分</th>
       <th>結果</th>
     </tr>
     </thead>
     <tbody>
       @if (isset($gameBigAndSmallVip[$legend['id']]))
       @foreach ($gameBigAndSmallVip[$legend['id']] as $key => $value)
-      <tr>
-        <td>{{$key+1}}</td>
+      <tr name="game_predict_bigandsmall_vip">
+        <td name="{{$value['id']}}" >{{$key+1}}</td>
         <td>{{$value['bigger']}}</td>
-        <td>{{$value['handicap']}} {{($value['handicap_type'] == 1) ? '平' : ''}}</td>
         <td>{{$value['smaller']}}</td>
-        <td>
-            @if (($value['game_over'] == 1))
-              {{($value->game_predict == 0) ? '大' : '小'}}
-            @elseif(!$isLogin)
-            <span style="color: orange">
-              請先登入帳號
-            </span>
-            @elseif ($value['game_predict_status'] == 0)
-              正在分析中
-            @elseif (!empty($value['vip']))
-              @if(in_array($user['mobile_phone'], json_decode($value['vip'], true)))
-                {{($value->game_predict == 0) ? '大' : '小'}}
-              @else
-              <span style=" color: red">
-                請先購買權限
-              </span>
-              @endif
-            @else
-            <span style=" color: red">
-              請先購買權限
-            </span>
-            @endif
-        </td>
         <td>{{$value->game_date}}</td>
         @if ($value['game_over'] == 1)
-          <td>{{$value['game_bigger_score']}} : {{$value['game_smaller_score']}}</td>
           <td>
             @if($value['game_result'] == $value['game_predict'])
               <span style=" color: green">
@@ -278,8 +206,9 @@
             @endif          
           </td>
         @else
-          <td></td>
-          <td></td>
+          <td><span style=" color: blue">
+                比賽結果尚未出爐
+              </span></td>
         @endif
       </tr>
       @endforeach
@@ -289,11 +218,8 @@
     <tr>
       <th>編號</th>
       <th>讓分</th>
-      <th>盤口</th>
       <th>受讓</th>
-      <th>精準預測</th>
       <th>球賽日期</th>
-      <th>比分</th>
       <th>結果</th>
     </tr>
     </tfoot>
@@ -310,16 +236,32 @@
         // `d` is the original data object for the row
         return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
             '<tr>'+
-                '<td>Full name:</td>'+
-                '<td>'+d.name+'</td>'+
+                '<td>讓分:</td>'+
+                '<td>'+d.bigger+'</td>'+
             '</tr>'+
             '<tr>'+
-                '<td>Extension number:</td>'+
-                '<td>'+d.extn+'</td>'+
+                '<td>受讓:</td>'+
+                '<td>'+d.handicap+'</td>'+
             '</tr>'+
             '<tr>'+
-                '<td>Extra info:</td>'+
-                '<td>And any further details here (images etc)...</td>'+
+                '<td>受讓:</td>'+
+                '<td>'+d.smaller+'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td>精準預測:</td>'+
+                '<td>'+d.game_predict+'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td>球賽日期:</td>'+
+                '<td>'+d.game_date+'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td>比分:</td>'+
+                '<td>'+d.score+'</td>'+
+            '</tr>'+
+            '<tr>'+
+                '<td>結果:</td>'+
+                '<td>'+d.result+'</td>'+
             '</tr>'+
         '</table>';
     }
@@ -330,8 +272,7 @@
         // Add event listener for opening and closing details
         $('.table-striped tbody').on('click', 'td.details-control', function () {
             var tr = $(this).closest('tr');
-            var row = table.row( tr );
-     
+            var row = $(this).parents('table').first().DataTable().row( tr );
             if ( row.child.isShown() ) {
                 // This row is already open - close it
                 row.child.hide();
@@ -339,7 +280,19 @@
             }
             else {
                 // Open this row
-                row.child( format('d') ).show();
+                $.ajax({
+                    type: "post",
+                    headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+                    data: {'type': tr.attr('name'), 'id': $(this).attr('name')},
+                    url: "/result",
+                    dataType: "json",
+                    success: function(data) {
+                        row.child( format(data) ).show();
+                    },
+                    error: function(jqXHR) {
+                        alert("發生錯誤, 請重新操作");
+                    }
+                })
                 tr.addClass('shown');
             }
         } );
